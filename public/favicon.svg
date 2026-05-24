@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#23272b" />
+  <text
+    x="32"
+    y="29"
+    text-anchor="middle"
+    font-family="Inter, Helvetica, Arial, sans-serif"
+    font-weight="800"
+    font-size="14"
+    fill="#1aa64a"
+  >airport</text>
+  <text
+    x="32"
+    y="46"
+    text-anchor="middle"
+    font-family="Inter, Helvetica, Arial, sans-serif"
+    font-weight="800"
+    font-size="14"
+    fill="#ffffff"
+  >energy</text>
+</svg>

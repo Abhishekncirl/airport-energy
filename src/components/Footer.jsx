@@ -1,0 +1,101 @@
+import { Facebook, Instagram, Twitter, Mail, Phone } from 'lucide-react';
+import Logo from './Logo.jsx';
+
+const LINKS = [
+  { href: '#home', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
+  { href: '#prices', label: 'Fuel Prices' },
+  { href: '#location', label: 'Location' },
+  { href: '#contact', label: 'Contact' },
+];
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="bg-brand-950 text-slate-300">
+      <div className="container-x grid gap-10 py-14 lg:grid-cols-4">
+        <div className="lg:col-span-2">
+          <div className="flex items-center gap-3">
+            <Logo className="h-10 w-10" />
+            <span className="text-xl font-extrabold tracking-tight text-white">
+              Airport<span className="text-accent">Energy</span>
+            </span>
+          </div>
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
+            Premium fuel, fast EV charging, and a 24/7 convenience store —
+            designed for travellers and locals on the move.
+          </p>
+          <div className="mt-6 flex gap-3">
+            {[
+              { Icon: Facebook, label: 'Facebook' },
+              { Icon: Instagram, label: 'Instagram' },
+              { Icon: Twitter, label: 'Twitter / X' },
+            ].map(({ Icon, label }) => (
+              <a
+                key={label}
+                href="#"
+                aria-label={label}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:border-accent hover:bg-accent hover:text-white"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+            Quick links
+          </h3>
+          <ul className="mt-4 space-y-2 text-sm">
+            {LINKS.map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="hover:text-accent">
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
+            Contact
+          </h3>
+          <ul className="mt-4 space-y-3 text-sm">
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 text-accent" />
+              <a href="tel:+35318080000" className="hover:text-accent">
+                +353 1 808 0000
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail className="h-4 w-4 text-accent" />
+              <a href="mailto:hello@airportenergy.ie" className="hover:text-accent">
+                hello@airportenergy.ie
+              </a>
+            </li>
+            <li className="text-slate-400">
+              Airport Approach Road,<br />
+              Dublin Airport, K67 X4P9
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="border-t border-white/5">
+        <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs text-slate-500 sm:flex-row">
+          <p>© {year} Airport Energy. All rights reserved.</p>
+          <p>
+            Made for the road —{' '}
+            <a href="#home" className="hover:text-accent">
+              back to top ↑
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
