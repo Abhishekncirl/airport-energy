@@ -149,13 +149,13 @@ export default function AboutIllustration({ className = '' }) {
         strokeLinecap="round"
       />
 
-      {/* Floating EV badge */}
+      {/* Floating WashPod badge */}
       <g transform="translate(490 380)">
         <rect width="160" height="56" rx="14" fill="#1a1d20" stroke="#1aa64a" strokeOpacity="0.5" />
         <circle cx="30" cy="28" r="14" fill="#1aa64a" />
-        <path d="M28 20 L22 30 L29 30 L26 38 L34 28 L27 28 Z" fill="#ffffff" />
-        <text x="54" y="25" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">EV Fast Charge</text>
-        <text x="54" y="40" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="10" fill="#a4abb1">DC • CCS • CHAdeMO</text>
+        <path d="M30 18 C 24 26, 22 30, 22 34 a 8 8 0 0 0 16 0 c 0 -4 -2 -8 -8 -16 z" fill="#ffffff" />
+        <text x="54" y="25" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">WashPod Carwash</text>
+        <text x="54" y="40" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="10" fill="#a4abb1">Touch-free • Valet</text>
       </g>
 
       {/* Leaf accent */}

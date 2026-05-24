@@ -1,11 +1,4 @@
-import {
-  Fuel,
-  Sparkles,
-  ShoppingBag,
-  Wind,
-  Zap,
-  Coffee,
-} from 'lucide-react';
+import { Fuel, ShoppingBag, Wind, Coffee, Droplets, Sparkles } from 'lucide-react';
 
 const SERVICES = [
   {
@@ -15,10 +8,16 @@ const SERVICES = [
     tag: 'Forecourt',
   },
   {
+    icon: Droplets,
+    title: 'Carwash',
+    body: 'Modern WashPod facility — touch-free brushes and powerful jets for a spotless finish in minutes.',
+    tag: 'WashPod',
+  },
+  {
     icon: Sparkles,
-    title: 'Premium Fuels',
-    body: 'Performance-grade petrol and diesel formulated to clean engines and boost mileage.',
-    tag: 'Premium',
+    title: 'Valet Cleaning',
+    body: 'Full interior & exterior valet by trained pros — hand-wash, vacuum, dashboard, windows, and tyre dressing.',
+    tag: 'Detailing',
   },
   {
     icon: ShoppingBag,
@@ -31,12 +30,6 @@ const SERVICES = [
     title: 'Air & Water',
     body: 'Free tyre inflation and water top-ups to keep your journey safe and smooth.',
     tag: 'Forecourt',
-  },
-  {
-    icon: Zap,
-    title: 'EV Fast Charging',
-    body: 'High-speed DC chargers compatible with all major EV brands. 0–80% in ~25 min.',
-    tag: 'Electric',
   },
   {
     icon: Coffee,

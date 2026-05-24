@@ -14,8 +14,8 @@ const VALUES = [
   },
   {
     icon: Leaf,
-    title: 'Cleaner journeys',
-    body: 'Investing in EV chargers and low-emission products to support greener travel.',
+    title: 'Spotless cars',
+    body: 'Our WashPod carwash and valet team keep your vehicle clean inside and out.',
   },
 ];
 

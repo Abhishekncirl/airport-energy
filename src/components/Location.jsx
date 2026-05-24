@@ -57,7 +57,8 @@ export default function Location() {
                   Open 24 / 7 — every day of the year
                 </p>
                 <p className="mt-1 text-sm text-slate-500">
-                  Forecourt, store, café and EV chargers always available.
+                  Forecourt, store, café and WashPod carwash always
+                  available.
                 </p>
               </div>
             </div>

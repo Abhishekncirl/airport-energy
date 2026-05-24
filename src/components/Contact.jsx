@@ -38,7 +38,7 @@ export default function Contact() {
             Questions? We're here, around the clock.
           </h2>
           <p className="mt-4 text-lg text-slate-600">
-            Reach out about fleet accounts, EV charging partnerships, lost
+            Reach out about fleet accounts, carwash & valet bookings, lost
             items or just to say hi.
           </p>
 
@@ -52,10 +52,10 @@ export default function Contact() {
                   Call
                 </p>
                 <a
-                  href="tel:+35318080000"
+                  href="tel:+35318060538"
                   className="text-base font-semibold text-brand-900 hover:text-accent"
                 >
-                  +353 1 808 0000
+                  (01) 806 0538
                 </a>
               </div>
             </li>
@@ -68,10 +68,10 @@ export default function Contact() {
                   Email
                 </p>
                 <a
-                  href="mailto:hello@airportenergy.ie"
-                  className="text-base font-semibold text-brand-900 hover:text-accent"
+                  href="mailto:airportmotorsholdingsltd@gmail.com"
+                  className="break-all text-base font-semibold text-brand-900 hover:text-accent"
                 >
-                  hello@airportenergy.ie
+                  airportmotorsholdingsltd@gmail.com
                 </a>
               </div>
             </li>

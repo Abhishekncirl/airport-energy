@@ -24,8 +24,9 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
-            Premium fuel, fast EV charging, and a 24/7 convenience store —
-            designed for travellers and locals on the move.
+            Quality fuel, our WashPod carwash & valet service, and a 24/7
+            convenience store — designed for travellers and locals on the
+            move.
           </p>
           <div className="mt-6 flex gap-3">
             {[
@@ -67,14 +68,17 @@ export default function Footer() {
           <ul className="mt-4 space-y-3 text-sm">
             <li className="flex items-center gap-2">
               <Phone className="h-4 w-4 text-accent" />
-              <a href="tel:+35318080000" className="hover:text-accent">
-                +353 1 808 0000
+              <a href="tel:+35318060538" className="hover:text-accent">
+                (01) 806 0538
               </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-accent" />
-              <a href="mailto:hello@airportenergy.ie" className="hover:text-accent">
-                hello@airportenergy.ie
+            <li className="flex items-start gap-2">
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+              <a
+                href="mailto:airportmotorsholdingsltd@gmail.com"
+                className="break-all hover:text-accent"
+              >
+                airportmotorsholdingsltd@gmail.com
               </a>
             </li>
             <li className="text-slate-400">

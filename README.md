@@ -1,6 +1,6 @@
 # Airport Energy
 
-A modern, fully responsive marketing website for **Airport Energy**, a petrol station serving travellers and locals with premium fuel, EV fast charging, a convenience store, and 24/7 service.
+A modern, fully responsive marketing website for **Airport Energy**, a petrol station serving travellers and locals with quality fuel, a WashPod carwash & valet service, a convenience store, and 24/7 opening.
 
 Built with **React + Vite + Tailwind CSS** and styled with a deep-blue / white / fuel-orange brand palette. Icons from [Lucide](https://lucide.dev/).
 
@@ -11,8 +11,8 @@ Built with **React + Vite + Tailwind CSS** and styled with a deep-blue / white /
 - Sticky, scroll-aware navigation bar with mobile sheet
 - Premium **Hero** section with gradient + grid backdrop, floating price chip, and animated stats
 - **About Us** — story, mission and core values
-- **Services** — Petrol/Diesel, Premium Fuels, Convenience Store, Air & Water, EV Fast Charging, Café
-- **Fuel Prices** — live-style price cards with trend indicators and "last updated" timestamp
+- **Services** — Petrol & Diesel, WashPod Carwash, Valet Cleaning, Convenience Store, Air & Water, Café
+- **Fuel Prices** — live-style price cards (Petrol, Diesel) with trend indicators and "last updated" timestamp
 - **Location** — embedded Google Map, address, 24/7 hours, directions
 - **Contact** — accessible form (logs to `console`), phone, email, social links
 - Footer with quick links, contact info and social icons

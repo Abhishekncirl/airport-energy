@@ -1,10 +1,10 @@
-import { ArrowRight, Fuel, Clock, Zap } from 'lucide-react';
+import { ArrowRight, Fuel, Clock, Droplets } from 'lucide-react';
 import HeroIllustration from './HeroIllustration.jsx';
 
 const STATS = [
   { icon: Clock, label: 'Open', value: '24 / 7' },
-  { icon: Fuel, label: 'Fuel grades', value: '4 types' },
-  { icon: Zap, label: 'EV chargers', value: 'Fast DC' },
+  { icon: Fuel, label: 'Fuel grades', value: 'Petrol & Diesel' },
+  { icon: Droplets, label: 'Carwash', value: 'WashPod' },
 ];
 
 export default function Hero() {
@@ -40,9 +40,10 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            Airport Energy is your modern roadside stop for premium fuel, fast
-            EV charging, a stocked convenience store, and friendly service —
-            built for travellers and locals alike.
+            Airport Energy is your reliable roadside stop for quality fuel,
+            our WashPod carwash and full valet service, a stocked convenience
+            store, and friendly faces — built for travellers and locals
+            alike.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">

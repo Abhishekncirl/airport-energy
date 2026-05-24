@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Fuel, Sparkles, Zap, RefreshCw, TrendingDown, TrendingUp } from 'lucide-react';
+import { Fuel, RefreshCw, TrendingDown, TrendingUp } from 'lucide-react';
 
 const PRICES = [
   {
@@ -19,25 +19,6 @@ const PRICES = [
     base: 1.689,
     trend: 'up',
     change: 0.01,
-  },
-  {
-    key: 'premium',
-    label: 'Premium Plus 98',
-    icon: Sparkles,
-    accent: 'bg-accent-100 text-accent-700 ring-accent-200',
-    base: 1.889,
-    trend: 'up',
-    change: 0.03,
-  },
-  {
-    key: 'ev',
-    label: 'EV Fast Charge',
-    icon: Zap,
-    accent: 'bg-slate-900 text-white ring-slate-700',
-    base: 0.45,
-    unit: '/kWh',
-    trend: 'down',
-    change: -0.01,
   },
 ];
 
@@ -86,7 +67,7 @@ export default function FuelPrices() {
           </button>
         </div>
 
-        <div className="reveal mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="reveal mt-10 grid gap-6 sm:grid-cols-2">
           {PRICES.map(({ key, label, icon: Icon, accent, base, unit, trend, change }) => {
             const TrendIcon = trend === 'down' ? TrendingDown : TrendingUp;
             const trendColor =
