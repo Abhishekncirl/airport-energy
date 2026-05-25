@@ -9,7 +9,7 @@ export default function Location() {
           <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-xl">
             <iframe
               title="Airport Energy location map"
-              src="https://www.google.com/maps?q=Dublin%20Airport&output=embed"
+              src="https://www.google.com/maps?q=Airport+Energy+Old+Airport+Road+Collinstown+Swords+K67C5F3&output=embed"
               className="h-[420px] w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -39,8 +39,9 @@ export default function Location() {
                   Address
                 </p>
                 <p className="mt-1 text-base font-medium text-brand-900">
-                  Airport Approach Road,<br />
-                  Dublin Airport, Co. Dublin, K67 X4P9
+                  Airport Energy,<br />
+                  Old Airport Road, Collinstown,<br />
+                  Swords, Co. Dublin, K67 C5F3
                 </p>
               </div>
             </div>
@@ -72,7 +73,7 @@ export default function Location() {
                   Get directions
                 </p>
                 <a
-                  href="https://www.google.com/maps/dir/?api=1&destination=Dublin%20Airport"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Airport+Energy+Old+Airport+Road+Collinstown+Swords+K67C5F3"
                   target="_blank"
                   rel="noreferrer"
                   className="mt-1 inline-flex items-center gap-2 text-base font-semibold text-brand-700 hover:text-accent"

@@ -32,14 +32,24 @@ export default function Footer() {
           </p>
           <div className="mt-6 flex gap-3">
             {[
-              { Icon: Facebook, label: 'Facebook' },
-              { Icon: Instagram, label: 'Instagram' },
-              { Icon: Twitter, label: 'Twitter / X' },
-            ].map(({ Icon, label }) => (
+              { Icon: Facebook, label: 'Facebook', href: '#', external: false },
+              {
+                Icon: Instagram,
+                label: 'Instagram',
+                href:
+                  'https://www.instagram.com/airport_energy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
+                external: true,
+              },
+              { Icon: Twitter, label: 'Twitter / X', href: '#', external: false },
+            ].map(({ Icon, label, href, external }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
                 aria-label={label}
+                {...(external && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:border-accent hover:bg-accent hover:text-white"
               >
                 <Icon className="h-4 w-4" />
@@ -84,8 +94,8 @@ export default function Footer() {
               </a>
             </li>
             <li className="text-slate-400">
-              Airport Approach Road,<br />
-              Dublin Airport, K67 X4P9
+              Old Airport Road, Collinstown,<br />
+              Swords, Co. Dublin, K67 C5F3
             </li>
           </ul>
         </div>
