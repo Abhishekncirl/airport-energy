@@ -33,8 +33,10 @@ const SERVICES = [
   {
     icon: ShoppingBag,
     title: 'Convenience Store',
-    body: 'Snacks, essentials, travel kit and gifts — open every hour of every day.',
+    body: 'Car care essentials, fresh sandwiches, cold drinks, sweets and snacks — open every hour of every day.',
     tag: 'Shop',
+    href: '/convenience-store',
+    linkLabel: 'Browse the store',
   },
   {
     icon: Wind,

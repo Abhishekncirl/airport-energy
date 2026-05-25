@@ -7,6 +7,7 @@ const LINKS = [
   { to: '#about', label: 'About' },
   { to: '#services', label: 'Services' },
   { to: '#prices', label: 'Fuel Prices' },
+  { to: '/convenience-store', label: 'Convenience Store' },
   { to: '/coffee-snacks', label: 'Coffee & Snacks' },
   { to: '#location', label: 'Location' },
   { to: '#contact', label: 'Contact' },

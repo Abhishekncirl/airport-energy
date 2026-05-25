@@ -7,6 +7,7 @@ import ScrollManager from './components/ScrollManager.jsx';
 
 import HomePage from './pages/HomePage.jsx';
 import CoffeeSnacksPage from './pages/CoffeeSnacksPage.jsx';
+import ConvenienceStorePage from './pages/ConvenienceStorePage.jsx';
 
 export default function App() {
   const location = useLocation();
@@ -41,6 +42,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/coffee-snacks" element={<CoffeeSnacksPage />} />
+          <Route path="/convenience-store" element={<ConvenienceStorePage />} />
           {/* Fallback: anything unknown → home */}
           <Route path="*" element={<HomePage />} />
         </Routes>

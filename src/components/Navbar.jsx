@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Phone, Coffee } from 'lucide-react';
+import { Menu, X, Phone, Coffee, ShoppingBag } from 'lucide-react';
 import Logo from './Logo.jsx';
 import SmartLink from './SmartLink.jsx';
 
 // `kind: 'hash'` → in-page anchor on the home page.
 // `kind: 'route'` → dedicated page route.
+// `icon`         → optional Lucide icon shown before the label (route links).
 const NAV_LINKS = [
   { to: '#home', label: 'Home', kind: 'hash' },
   { to: '#about', label: 'About', kind: 'hash' },
   { to: '#services', label: 'Services', kind: 'hash' },
   { to: '#prices', label: 'Fuel Prices', kind: 'hash' },
-  { to: '/coffee-snacks', label: 'Coffee & Snacks', kind: 'route' },
+  { to: '/convenience-store', label: 'Store', kind: 'route', icon: ShoppingBag },
+  { to: '/coffee-snacks', label: 'Coffee', kind: 'route', icon: Coffee },
   { to: '#location', label: 'Location', kind: 'hash' },
   { to: '#contact', label: 'Contact', kind: 'hash' },
 ];
@@ -51,22 +53,23 @@ export default function Navbar() {
         </SmartLink>
 
         {/* Desktop nav */}
-        <ul className="hidden items-center gap-6 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <li key={link.to}>
-              <SmartLink
-                to={link.to}
-                className={`inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-accent ${
-                  scrolled ? 'text-slate-700' : 'text-white/90'
-                }`}
-              >
-                {link.kind === 'route' && link.to === '/coffee-snacks' && (
-                  <Coffee className="h-3.5 w-3.5" />
-                )}
-                {link.label}
-              </SmartLink>
-            </li>
-          ))}
+        <ul className="hidden items-center gap-5 lg:flex xl:gap-6">
+          {NAV_LINKS.map((link) => {
+            const Icon = link.icon;
+            return (
+              <li key={link.to}>
+                <SmartLink
+                  to={link.to}
+                  className={`inline-flex items-center gap-1.5 text-sm font-medium transition hover:text-accent ${
+                    scrolled ? 'text-slate-700' : 'text-white/90'
+                  }`}
+                >
+                  {Icon && <Icon className="h-3.5 w-3.5" />}
+                  {link.label}
+                </SmartLink>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="hidden lg:block">
@@ -95,20 +98,21 @@ export default function Navbar() {
         className={`lg:hidden ${open ? 'block' : 'hidden'} border-t border-slate-200 bg-white shadow-lg`}
       >
         <ul className="container-x flex flex-col py-4">
-          {NAV_LINKS.map((link) => (
-            <li key={link.to}>
-              <SmartLink
-                to={link.to}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-2 rounded-md px-2 py-3 text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700"
-              >
-                {link.kind === 'route' && link.to === '/coffee-snacks' && (
-                  <Coffee className="h-4 w-4 text-accent" />
-                )}
-                {link.label}
-              </SmartLink>
-            </li>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const Icon = link.icon;
+            return (
+              <li key={link.to}>
+                <SmartLink
+                  to={link.to}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-2 rounded-md px-2 py-3 text-base font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-700"
+                >
+                  {Icon && <Icon className="h-4 w-4 text-accent" />}
+                  {link.label}
+                </SmartLink>
+              </li>
+            );
+          })}
           <li className="px-2 pb-2 pt-3">
             <SmartLink
               to="#contact"
