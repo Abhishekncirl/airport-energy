@@ -35,6 +35,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      # SPA fallback: GitHub Pages serves 404.html for unknown paths.
+      # Copying index.html → 404.html lets React Router handle deep links
+      # like /airport-energy/coffee-snacks on first load.
+      - name: Add SPA 404 fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

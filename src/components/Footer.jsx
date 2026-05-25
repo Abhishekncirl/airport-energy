@@ -1,13 +1,15 @@
 import { Facebook, Instagram, Twitter, Mail, Phone } from 'lucide-react';
 import Logo from './Logo.jsx';
+import SmartLink from './SmartLink.jsx';
 
 const LINKS = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#services', label: 'Services' },
-  { href: '#prices', label: 'Fuel Prices' },
-  { href: '#location', label: 'Location' },
-  { href: '#contact', label: 'Contact' },
+  { to: '#home', label: 'Home' },
+  { to: '#about', label: 'About' },
+  { to: '#services', label: 'Services' },
+  { to: '#prices', label: 'Fuel Prices' },
+  { to: '/coffee-snacks', label: 'Coffee & Snacks' },
+  { to: '#location', label: 'Location' },
+  { to: '#contact', label: 'Contact' },
 ];
 
 export default function Footer() {
@@ -52,10 +54,10 @@ export default function Footer() {
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
             {LINKS.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} className="hover:text-accent">
+              <li key={l.to}>
+                <SmartLink to={l.to} className="hover:text-accent">
                   {l.label}
-                </a>
+                </SmartLink>
               </li>
             ))}
           </ul>
@@ -94,9 +96,9 @@ export default function Footer() {
           <p>© {year} Airport Energy. All rights reserved.</p>
           <p>
             Made for the road —{' '}
-            <a href="#home" className="hover:text-accent">
+            <SmartLink to="#home" className="hover:text-accent">
               back to top ↑
-            </a>
+            </SmartLink>
           </p>
         </div>
       </div>
