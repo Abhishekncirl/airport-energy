@@ -1,13 +1,35 @@
 import { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Outlet } from 'react-router-dom';
 
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 import ScrollManager from './components/ScrollManager.jsx';
+import ProtectedRoute from './components/admin/ProtectedRoute.jsx';
 
 import HomePage from './pages/HomePage.jsx';
 import CoffeeSnacksPage from './pages/CoffeeSnacksPage.jsx';
 import ConvenienceStorePage from './pages/ConvenienceStorePage.jsx';
+import AdminLoginPage from './pages/admin/AdminLoginPage.jsx';
+import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx';
+
+// Public-site layout: Navbar + Footer wrap every public route.
+function PublicLayout() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+// Admin layout is supplied inside each admin page so the login screen can
+// render full-bleed without a chrome. Nothing to wrap here.
+function AdminBareLayout() {
+  return <Outlet />;
+}
 
 export default function App() {
   const location = useLocation();
@@ -37,17 +59,40 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white">
       <ScrollManager />
-      <Navbar />
-      <main>
-        <Routes>
+      <Routes>
+        {/* Public site */}
+        <Route element={<PublicLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/coffee-snacks" element={<CoffeeSnacksPage />} />
           <Route path="/convenience-store" element={<ConvenienceStorePage />} />
-          {/* Fallback: anything unknown → home */}
+        </Route>
+
+        {/* Admin (no public Navbar/Footer) */}
+        <Route element={<AdminBareLayout />}>
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <AdminDashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboardPage />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+
+        {/* Anything else → public home */}
+        <Route element={<PublicLayout />}>
           <Route path="*" element={<HomePage />} />
-        </Routes>
-      </main>
-      <Footer />
+        </Route>
+      </Routes>
     </div>
   );
 }

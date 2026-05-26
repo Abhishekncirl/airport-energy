@@ -104,6 +104,68 @@ Reusable component classes (`src/index.css`):
 
 ---
 
+## 🛡️ Admin Panel (Supabase-backed)
+
+The site ships with an admin panel at **`/admin/login`** that lets authorised staff update the prices shown on the public *Live Fuel Prices* section. It uses [Supabase](https://supabase.com/) for both authentication and storage — no Node/Express backend is needed, so it deploys to GitHub Pages alongside the static site.
+
+### What's protected
+- `/admin/login` — public, but redirects to dashboard once you're signed in
+- `/admin` and `/admin/dashboard` — require a valid Supabase session (auto-redirect to login otherwise)
+
+### Setup (one-time, ~10 minutes)
+
+**1. Create a Supabase project** at https://supabase.com/dashboard → *New project*. Free tier is fine.
+
+**2. Run the schema** at *SQL Editor → New query*. Paste the entire contents of `supabase/schema.sql` and click *Run*. This creates:
+- `fuel_prices` table (seeded with €1.739 petrol / €1.689 diesel) — public READ
+- `price_changes` audit table — authenticated READ only
+- `update_fuel_price(text, numeric)` RPC — the only way to mutate prices, atomic with audit logging, RLS-checked
+
+**3. Tighten authentication** at *Authentication → Providers → Email*:
+- Make sure **Email** is enabled
+- Turn **OFF** *Allow new users to sign up* (so only invited staff can log in)
+- (Optional) *Email templates → Magic Link / Recovery* — customise with Airport Energy branding
+
+**4. Add your admin users** at *Authentication → Users → Add user → Create new user*:
+- Enter the staff email + a temporary password
+- Tick *Auto Confirm User* so they can sign in immediately
+- Repeat for every staff member who needs to update prices
+
+**5. Wire up the frontend** with the two public keys from *Project Settings → API*:
+
+```bash
+cp .env.example .env.local
+# then edit .env.local and paste the two values
+```
+
+```env
+VITE_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOi...
+```
+
+Restart `npm run dev`, visit http://localhost:5173/admin/login, and sign in with one of the users you created in step 4. ✅
+
+**6. Make it live** — open *GitHub repo → Settings → Secrets and variables → Actions → New repository secret* and add the same two values as repo secrets named `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. The next push to `main` will redeploy with the keys baked in.
+
+### Day-to-day use
+- Staff visit `https://<your-site>/admin/login`
+- They edit petrol/diesel prices on the dashboard and click *Save changes*
+- The public *Live Fuel Prices* section updates the next time anyone loads or refreshes the homepage
+- Every change is recorded in `price_changes` (timestamp, old price, new price, user email)
+
+### Managing admins
+- **Add** a new staff member → Supabase *Authentication → Users → Add user*
+- **Remove** access → delete that user (or set them to *Banned*)
+- **Reset password** → *Authentication → Users → (user) → Send password recovery*
+
+### Security notes
+- The Supabase URL + anon key are **public** by design — security lives in the database (RLS + the security-definer function), not in keeping the key secret
+- All writes go through `update_fuel_price()`, which checks `auth.uid()` server-side and atomically appends to the audit log
+- Sessions are stored in browser `localStorage` and auto-refresh; Supabase rotates the JWT
+- For production: enable *MFA* in Supabase Auth settings, set a sensible *Password Policy*, and rotate the anon key if you suspect compromise (regenerates in Supabase → invalidates all old sessions)
+
+---
+
 ## 🔮 Future Enhancements
 
 - Hook the contact form to a real backend (Resend / Formspree / a Next.js API route)

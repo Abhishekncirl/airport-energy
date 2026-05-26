@@ -33,6 +33,13 @@ jobs:
         run: npm ci
 
       - name: Build
+        # Vite reads these env vars at build time and inlines them into the
+        # bundle. Set them in repo Settings → Secrets and variables → Actions.
+        # If they're missing the build still succeeds and the site falls back
+        # to hardcoded prices + a "not configured" admin notice.
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: npm run build
 
       # SPA fallback: GitHub Pages serves 404.html for unknown paths.
