@@ -17,3 +17,8 @@ yarn-error.log*
 .claude/
 .vscode/
 .idea/
+
+# Raw source media (kept locally as reference; web-optimised copies live
+# under public/). Excluded because GitHub limits files to 100 MB.
+*.MOV
+*.mov

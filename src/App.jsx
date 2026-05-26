@@ -9,6 +9,7 @@ import ProtectedRoute from './components/admin/ProtectedRoute.jsx';
 import HomePage from './pages/HomePage.jsx';
 import CoffeeSnacksPage from './pages/CoffeeSnacksPage.jsx';
 import ConvenienceStorePage from './pages/ConvenienceStorePage.jsx';
+import CarwashPage from './pages/CarwashPage.jsx';
 import AdminLoginPage from './pages/admin/AdminLoginPage.jsx';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx';
 
@@ -65,6 +66,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/coffee-snacks" element={<CoffeeSnacksPage />} />
           <Route path="/convenience-store" element={<ConvenienceStorePage />} />
+          <Route path="/carwash" element={<CarwashPage />} />
         </Route>
 
         {/* Admin (no public Navbar/Footer) */}

@@ -23,6 +23,8 @@ const SERVICES = [
     title: 'Carwash',
     body: 'Modern WashPod facility — touch-free brushes and powerful jets for a spotless finish in minutes.',
     tag: 'WashPod',
+    href: '/carwash',
+    linkLabel: 'View wash packages',
   },
   {
     icon: Sparkles,
