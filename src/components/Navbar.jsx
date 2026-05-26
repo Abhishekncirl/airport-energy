@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Phone, Coffee, ShoppingBag } from 'lucide-react';
+import { Menu, X, Phone, Coffee, ShoppingBag, Lock } from 'lucide-react';
 import Logo from './Logo.jsx';
 import SmartLink from './SmartLink.jsx';
 
@@ -16,6 +16,14 @@ const NAV_LINKS = [
   { to: '#location', label: 'Location', kind: 'hash' },
   { to: '#contact', label: 'Contact', kind: 'hash' },
 ];
+
+// Visually separated from the main nav — it's a staff entry point, not a
+// content link. Rendered after a small divider.
+const ADMIN_LINK = {
+  to: '/admin/login',
+  label: 'Admin',
+  icon: Lock,
+};
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -72,7 +80,21 @@ export default function Navbar() {
           })}
         </ul>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-3 lg:flex">
+          {/* Staff entry — lower visual weight than the main "Get in Touch" CTA */}
+          <SmartLink
+            to={ADMIN_LINK.to}
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+              scrolled
+                ? 'border-slate-200 text-slate-600 hover:border-accent hover:text-accent'
+                : 'border-white/20 text-white/80 hover:border-accent hover:text-accent'
+            }`}
+            aria-label="Admin login"
+          >
+            <ADMIN_LINK.icon className="h-3.5 w-3.5" />
+            {ADMIN_LINK.label}
+          </SmartLink>
+
           <SmartLink to="#contact" className="btn-primary">
             <Phone className="h-4 w-4" />
             Get in Touch
@@ -113,6 +135,16 @@ export default function Navbar() {
               </li>
             );
           })}
+          <li className="border-t border-slate-100 pt-2">
+            <SmartLink
+              to={ADMIN_LINK.to}
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 rounded-md px-2 py-3 text-sm font-semibold text-slate-500 hover:bg-brand-50 hover:text-brand-700"
+            >
+              <ADMIN_LINK.icon className="h-4 w-4" />
+              {ADMIN_LINK.label}
+            </SmartLink>
+          </li>
           <li className="px-2 pb-2 pt-3">
             <SmartLink
               to="#contact"

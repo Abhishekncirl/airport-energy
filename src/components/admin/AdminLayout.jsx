@@ -1,4 +1,4 @@
-import { LogOut } from 'lucide-react';
+import { ExternalLink, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Logo from '../Logo.jsx';
@@ -35,20 +35,33 @@ export default function AdminLayout({ children }) {
             </span>
           </Link>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
             <div className="hidden text-right sm:block">
               <p className="text-xs text-slate-500">Signed in as</p>
               <p className="text-sm font-semibold text-brand-900">
                 {user?.email ?? 'staff'}
               </p>
             </div>
+            {/* Opens the public homepage (scrolled to the prices section)
+                in a new tab so staff can verify their changes without
+                losing the admin session. Uses BASE_URL so the link works
+                both in local dev ('/') and on GitHub Pages ('/airport-energy/'). */}
+            <a
+              href={`${import.meta.env.BASE_URL}#prices`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-accent/30 transition hover:bg-accent-600"
+            >
+              <ExternalLink className="h-4 w-4" />
+              <span className="hidden sm:inline">View site</span>
+            </a>
             <button
               type="button"
               onClick={onLogout}
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-accent hover:text-accent"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-accent hover:text-accent sm:px-4"
             >
               <LogOut className="h-4 w-4" />
-              Log out
+              <span className="hidden sm:inline">Log out</span>
             </button>
           </div>
         </div>
