@@ -11,6 +11,10 @@ import {
 
 const INITIAL = { name: '', email: '', message: '' };
 
+// Where contact form messages get sent. Change here if the business email
+// ever moves.
+const TO_EMAIL = 'airportmotorsholdingsltd@gmail.com';
+
 export default function Contact() {
   const [form, setForm] = useState(INITIAL);
   const [sent, setSent] = useState(false);
@@ -18,13 +22,33 @@ export default function Contact() {
   const onChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
+  // No backend on GitHub Pages — instead we open the user's default mail
+  // app with a pre-filled message addressed to the business. They just have
+  // to hit Send in their own mail client. This works on every device that
+  // has a mail app configured (most do, by default).
   const onSubmit = (e) => {
     e.preventDefault();
-    // No backend - log the submission and show a confirmation state.
-    console.log('Airport Energy contact form submission:', form);
+
+    const subject = `Website enquiry from ${form.name || 'a visitor'}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Reply to: ${form.email}`,
+      '',
+      form.message,
+      '',
+      '---',
+      'Sent from airportenergy.ie',
+    ].join('\n');
+
+    const mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // Triggers the OS mail handler — Gmail / Apple Mail / Outlook etc.
+    window.location.href = mailto;
+
     setSent(true);
-    setForm(INITIAL);
-    setTimeout(() => setSent(false), 5000);
+    setTimeout(() => setSent(false), 6000);
   };
 
   return (
@@ -167,7 +191,7 @@ export default function Contact() {
             {sent ? (
               <>
                 <CheckCircle2 className="h-4 w-4" />
-                Message sent - thanks!
+                Opening your email app…
               </>
             ) : (
               <>
@@ -178,7 +202,9 @@ export default function Contact() {
           </button>
 
           <p className="mt-4 text-xs text-slate-500">
-            We typically respond within one business day.
+            Clicking Send opens your email app with the message pre-filled
+            so you can review it before sending. We typically respond within
+            one business day.
           </p>
         </form>
       </div>
