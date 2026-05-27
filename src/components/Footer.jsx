@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Mail, Phone } from 'lucide-react';
+import { Facebook, Instagram, Mail, Phone } from 'lucide-react';
 import Logo from './Logo.jsx';
 import SmartLink from './SmartLink.jsx';
 
@@ -36,24 +36,25 @@ export default function Footer() {
           </p>
           <div className="mt-6 flex gap-3">
             {[
-              { Icon: Facebook, label: 'Facebook', href: '#', external: false },
+              {
+                Icon: Facebook,
+                label: 'Facebook',
+                href:
+                  'https://www.facebook.com/p/Airport-Energy-Service-Station-61561695792654/',
+              },
               {
                 Icon: Instagram,
                 label: 'Instagram',
                 href:
                   'https://www.instagram.com/airport_energy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
-                external: true,
               },
-              { Icon: Twitter, label: 'Twitter / X', href: '#', external: false },
-            ].map(({ Icon, label, href, external }) => (
+            ].map(({ Icon, label, href }) => (
               <a
                 key={label}
                 href={href}
                 aria-label={label}
-                {...(external && {
-                  target: '_blank',
-                  rel: 'noopener noreferrer',
-                })}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:border-accent hover:bg-accent hover:text-white"
               >
                 <Icon className="h-4 w-4" />

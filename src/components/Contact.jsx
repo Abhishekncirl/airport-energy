@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   Facebook,
   Instagram,
-  Twitter,
 } from 'lucide-react';
 
 const INITIAL = { name: '', email: '', message: '' };
@@ -96,24 +95,25 @@ export default function Contact() {
             </p>
             <div className="mt-3 flex gap-3">
               {[
-                { Icon: Facebook, href: '#', label: 'Facebook', external: false },
+                {
+                  Icon: Facebook,
+                  href:
+                    'https://www.facebook.com/p/Airport-Energy-Service-Station-61561695792654/',
+                  label: 'Facebook',
+                },
                 {
                   Icon: Instagram,
                   href:
                     'https://www.instagram.com/airport_energy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
                   label: 'Instagram',
-                  external: true,
                 },
-                { Icon: Twitter, href: '#', label: 'Twitter / X', external: false },
-              ].map(({ Icon, href, label, external }) => (
+              ].map(({ Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  {...(external && {
-                    target: '_blank',
-                    rel: 'noopener noreferrer',
-                  })}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:border-accent hover:bg-accent hover:text-white"
                 >
                   <Icon className="h-4 w-4" />
