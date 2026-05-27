@@ -1,121 +1,35 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Fuel,
+  Loader2,
+  Minus,
   RefreshCw,
   TrendingDown,
   TrendingUp,
-  Minus,
-  Loader2,
 } from 'lucide-react';
 
-import { isSupabaseConfigured, supabase } from '../lib/supabase.js';
+import { useFuelPrices } from '../hooks/useFuelPrices.js';
+import { formatRelativeTime } from '../utils/formatRelativeTime.js';
 
-// Cards (icon, label, accent) merged with whatever live data we pull from
-// Supabase. The hardcoded `fallback` numbers are only used when the build
-// has no Supabase keys (e.g. someone cloned the repo without credentials).
+// Static card metadata. Live values come from the shared hook below so this
+// section and the hero floating chip can never disagree.
 const FUELS = [
   {
     key: 'petrol',
     label: 'Petrol (Unleaded 95)',
     icon: Fuel,
     accent: 'bg-fuel-green/10 text-fuel-green ring-fuel-green/30',
-    fallback: { price: 1.739, previous_price: 1.759 },
   },
   {
     key: 'diesel',
     label: 'Diesel',
     icon: Fuel,
     accent: 'bg-brand-100 text-brand-700 ring-brand-200',
-    fallback: { price: 1.689, previous_price: 1.679 },
   },
 ];
 
-function formatTime(date) {
-  return date.toLocaleTimeString(undefined, {
-    hour: '2-digit',
-    minute: '2-digit',
-  });
-}
-
 export default function FuelPrices() {
-  // Map of { petrol: row, diesel: row }
-  const [rows, setRows] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [lastFetchedAt, setLastFetchedAt] = useState(new Date());
-  // Re-render every 30s to keep the "X min ago" line fresh.
-  const [, setTick] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setTick((n) => n + 1), 30_000);
-    return () => clearInterval(id);
-  }, []);
-
-  const loadPrices = useCallback(async () => {
-    setLoading(true);
-
-    // Fallback when Supabase isn't configured for this build.
-    if (!isSupabaseConfigured) {
-      const fallback = {};
-      for (const f of FUELS) {
-        fallback[f.key] = {
-          ...f.fallback,
-          updated_at: new Date(Date.now() - 5 * 60 * 1000).toISOString(),
-        };
-      }
-      setRows(fallback);
-      setLastFetchedAt(new Date());
-      setLoading(false);
-      return;
-    }
-
-    const { data, error } = await supabase
-      .from('fuel_prices')
-      .select('fuel_type, price, previous_price, updated_at')
-      .in('fuel_type', FUELS.map((f) => f.key));
-
-    if (error || !data) {
-      // Fall back to the seeded values rather than show an error to visitors.
-      const fallback = {};
-      for (const f of FUELS) {
-        fallback[f.key] = {
-          ...f.fallback,
-          updated_at: new Date().toISOString(),
-        };
-      }
-      setRows(fallback);
-    } else {
-      const byKey = {};
-      for (const r of data) {
-        byKey[r.fuel_type] = {
-          price: Number(r.price),
-          previous_price:
-            r.previous_price != null ? Number(r.previous_price) : null,
-          updated_at: r.updated_at,
-        };
-      }
-      setRows(byKey);
-    }
-
-    setLastFetchedAt(new Date());
-    setLoading(false);
-  }, []);
-
-  useEffect(() => { loadPrices(); }, [loadPrices]);
-
-  // Most-recent updated_at across all rows = the "Last updated" stamp shown
-  // under the cards. Falls back to fetch time if no row has one.
-  const mostRecentUpdate = useMemo(() => {
-    const stamps = Object.values(rows)
-      .map((r) => (r?.updated_at ? new Date(r.updated_at) : null))
-      .filter(Boolean);
-    if (!stamps.length) return lastFetchedAt;
-    return new Date(Math.max(...stamps.map((d) => d.getTime())));
-  }, [rows, lastFetchedAt]);
-
-  const minutesAgo = Math.max(
-    0,
-    Math.floor((Date.now() - mostRecentUpdate.getTime()) / 60000)
-  );
+  const { petrol, diesel, updatedAt, loading, refresh } = useFuelPrices();
+  const rows = { petrol, diesel };
 
   return (
     <section id="prices" className="section bg-white">
@@ -132,7 +46,7 @@ export default function FuelPrices() {
 
           <button
             type="button"
-            onClick={loadPrices}
+            onClick={refresh}
             disabled={loading}
             className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-accent hover:text-accent disabled:cursor-not-allowed disabled:opacity-60"
           >
@@ -155,10 +69,15 @@ export default function FuelPrices() {
                 ? Number((price - previous).toFixed(3))
                 : null;
 
-            // Falling price = good for the customer, render green.
-            // Rising = orange. No change = neutral grey.
+            // Falling price = customer-friendly = green; rising = amber.
             const TrendIcon =
-              delta == null ? Minus : delta < 0 ? TrendingDown : delta > 0 ? TrendingUp : Minus;
+              delta == null
+                ? Minus
+                : delta < 0
+                  ? TrendingDown
+                  : delta > 0
+                    ? TrendingUp
+                    : Minus;
             const trendColor =
               delta == null || delta === 0
                 ? 'text-slate-500'
@@ -208,12 +127,19 @@ export default function FuelPrices() {
 
         <p className="reveal mt-8 flex flex-wrap items-center gap-2 text-sm text-slate-500">
           <span className="inline-block h-2 w-2 animate-pulse-soft rounded-full bg-fuel-green" />
-          Last updated at{' '}
-          <span className="font-semibold text-slate-700">
-            {formatTime(mostRecentUpdate)}
-          </span>
-          <span className="text-slate-400">•</span>
-          <span>{minutesAgo === 0 ? 'just now' : `${minutesAgo} min ago`}</span>
+          {updatedAt ? (
+            <>
+              <span className="font-semibold text-slate-700">
+                {formatRelativeTime(updatedAt)}
+              </span>
+              <span className="text-slate-400">•</span>
+              <span>auto-refreshes every minute</span>
+            </>
+          ) : loading ? (
+            <span>Loading live prices…</span>
+          ) : (
+            <span>No data available</span>
+          )}
         </p>
       </div>
     </section>

@@ -1,5 +1,9 @@
-import { ArrowRight, Fuel, Clock, Droplets } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, Clock, Droplets, Fuel } from 'lucide-react';
+
 import HeroIllustration from './HeroIllustration.jsx';
+import { useFuelPrices } from '../hooks/useFuelPrices.js';
+import { formatRelativeTime } from '../utils/formatRelativeTime.js';
 
 const STATS = [
   { icon: Clock, label: 'Open', value: '24 / 7' },
@@ -8,6 +12,20 @@ const STATS = [
 ];
 
 export default function Hero() {
+  // Shared with the "Live Fuel Prices" section further down the page, so a
+  // price change in /admin propagates to both within one poll cycle (60s).
+  const { petrol, updatedAt, loading, error } = useFuelPrices();
+
+  // Re-render every 30s so the "Updated X min ago" label drifts forward
+  // between Supabase polls.
+  const [, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick((n) => n + 1), 30_000);
+    return () => clearInterval(id);
+  }, []);
+
+  const priceUnavailable = !petrol && !loading && error;
+
   return (
     <section
       id="home"
@@ -77,22 +95,47 @@ export default function Hero() {
         <div className="relative animate-fade-in">
           <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-accent/30 via-brand-500/20 to-transparent blur-2xl" />
           <div className="overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/50">
-            <HeroIllustration className="block h-[420px] w-full sm:h-[520px]" />
+            <HeroIllustration
+              className="block h-[420px] w-full sm:h-[520px]"
+              petrolPrice={petrol?.price}
+            />
           </div>
 
-          {/* Floating price chip */}
-          <div className="absolute -bottom-6 left-6 hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-xl sm:block">
+          {/* Floating price chip — clickable, links to the Live Fuel Prices
+              section. Pulls from the same hook as that section so the two
+              values can never drift out of sync. */}
+          <a
+            href="#prices"
+            aria-label="See live fuel prices"
+            className="absolute -bottom-6 left-6 hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-xl transition hover:-translate-y-0.5 hover:shadow-2xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 sm:block"
+          >
             <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
               Unleaded 95
             </p>
-            <p className="mt-1 text-2xl font-extrabold text-brand-900">
-              €1.74<span className="text-sm font-semibold text-slate-500">/L</span>
-            </p>
+
+            {priceUnavailable ? (
+              <p className="mt-1 text-sm font-medium text-slate-400">
+                Price unavailable
+              </p>
+            ) : petrol?.price != null ? (
+              <p className="mt-1 text-2xl font-extrabold text-brand-900">
+                €{petrol.price.toFixed(3)}
+                <span className="text-sm font-semibold text-slate-500">/L</span>
+              </p>
+            ) : (
+              // First-paint skeleton (pulsing line)
+              <p className="mt-2 h-6 w-24 animate-pulse-soft rounded bg-slate-200" />
+            )}
+
             <p className="mt-1 flex items-center gap-1 text-xs font-medium text-fuel-green">
               <span className="h-1.5 w-1.5 rounded-full bg-fuel-green" />
-              Updated 5 min ago
+              {updatedAt
+                ? formatRelativeTime(updatedAt)
+                : loading
+                  ? 'Loading…'
+                  : 'No data'}
             </p>
-          </div>
+          </a>
         </div>
       </div>
     </section>

@@ -1,6 +1,18 @@
 // Custom SVG hero illustration — guaranteed to render and stays on-brand.
 // Stylised fuel pump with EV-charge and leaf accents.
-export default function HeroIllustration({ className = '' }) {
+//
+// `petrolPrice` (optional) — live Unleaded 95 price. When supplied the
+// pump's centre display shows the live value so the artwork can't drift
+// out of sync with the floating chip + the Live Fuel Prices section.
+// Falls back to a static "€1.74" if omitted (keeps Storybook-style usage
+// working).
+export default function HeroIllustration({ className = '', petrolPrice }) {
+  // Format to 2 decimals so the SVG text stays compact (€1.74 vs €1.739).
+  const priceLabel =
+    typeof petrolPrice === 'number'
+      ? `€${petrolPrice.toFixed(2)}`
+      : '€1.74';
+
   return (
     <svg
       viewBox="0 0 720 540"
@@ -101,7 +113,7 @@ export default function HeroIllustration({ className = '' }) {
           fontSize="30"
           fill="#ffffff"
         >
-          €1.74
+          {priceLabel}
         </text>
         <text
           x="360"
