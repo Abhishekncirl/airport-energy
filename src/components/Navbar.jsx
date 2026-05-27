@@ -8,6 +8,7 @@ import {
   Lock,
   Droplets,
   Sparkles,
+  LayoutGrid,
 } from 'lucide-react';
 import Logo from './Logo.jsx';
 import SmartLink from './SmartLink.jsx';
@@ -22,6 +23,7 @@ const NAV_LINKS = [
   { to: '/valet-cleaning', label: 'Valet', kind: 'route', icon: Sparkles },
   { to: '/convenience-store', label: 'Store', kind: 'route', icon: ShoppingBag },
   { to: '/coffee-snacks', label: 'Coffee', kind: 'route', icon: Coffee },
+  { to: '/other-services', label: 'More', kind: 'route', icon: LayoutGrid },
   { to: '#location', label: 'Location', kind: 'hash' },
   { to: '#contact', label: 'Contact', kind: 'hash' },
 ];

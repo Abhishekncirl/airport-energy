@@ -4,9 +4,9 @@ import {
   Coffee,
   Droplets,
   Fuel,
+  LayoutGrid,
   ShoppingBag,
   Sparkles,
-  Wind,
 } from 'lucide-react';
 
 // Each service can optionally have a `href` — if present, the whole card
@@ -43,10 +43,12 @@ const SERVICES = [
     linkLabel: 'Browse the store',
   },
   {
-    icon: Wind,
-    title: 'Air & Water',
-    body: 'Free tyre inflation and water top-ups to keep your journey safe and smooth.',
-    tag: 'Forecourt',
+    icon: LayoutGrid,
+    title: 'Other Services',
+    body: 'More than just fuel — self-service laundry, free ATM, M50 toll payments and more, all in one stop.',
+    tag: 'Extras',
+    href: '/other-services',
+    linkLabel: 'See all services',
   },
   {
     icon: Coffee,

@@ -11,6 +11,7 @@ import CoffeeSnacksPage from './pages/CoffeeSnacksPage.jsx';
 import ConvenienceStorePage from './pages/ConvenienceStorePage.jsx';
 import CarwashPage from './pages/CarwashPage.jsx';
 import ValetCleaningPage from './pages/ValetCleaningPage.jsx';
+import OtherServicesPage from './pages/OtherServicesPage.jsx';
 import AdminLoginPage from './pages/admin/AdminLoginPage.jsx';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage.jsx';
 
@@ -69,6 +70,7 @@ export default function App() {
           <Route path="/convenience-store" element={<ConvenienceStorePage />} />
           <Route path="/carwash" element={<CarwashPage />} />
           <Route path="/valet-cleaning" element={<ValetCleaningPage />} />
+          <Route path="/other-services" element={<OtherServicesPage />} />
         </Route>
 
         {/* Admin (no public Navbar/Footer) */}

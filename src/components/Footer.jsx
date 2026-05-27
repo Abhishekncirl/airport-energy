@@ -11,6 +11,7 @@ const LINKS = [
   { to: '/valet-cleaning', label: 'Valet Centre' },
   { to: '/convenience-store', label: 'Convenience Store' },
   { to: '/coffee-snacks', label: 'Coffee & Snacks' },
+  { to: '/other-services', label: 'Other Services' },
   { to: '#location', label: 'Location' },
   { to: '#contact', label: 'Contact' },
 ];
