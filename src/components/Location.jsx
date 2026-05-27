@@ -55,7 +55,7 @@ export default function Location() {
                   Opening hours
                 </p>
                 <p className="mt-1 text-base font-medium text-brand-900">
-                  Open 24 / 7 — every day of the year
+                  Open 24 / 7 - every day of the year
                 </p>
                 <p className="mt-1 text-sm text-slate-500">
                   Forecourt, store, café and WashPod carwash always

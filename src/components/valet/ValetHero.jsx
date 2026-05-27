@@ -57,7 +57,7 @@ export default function ValetHero() {
             </h1>
 
             <p className="mt-4 max-w-2xl text-base text-white/85 drop-shadow sm:text-lg">
-              Premium self-service detailing — pro-grade machines, just{' '}
+              Premium self-service detailing - pro-grade machines, just{' '}
               <span className="font-semibold text-white">€1 per use.</span>
             </p>
 

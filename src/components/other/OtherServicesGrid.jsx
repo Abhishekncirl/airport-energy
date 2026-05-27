@@ -2,25 +2,25 @@ import ServiceCard from './ServiceCard.jsx';
 
 const BASE = import.meta.env.BASE_URL;
 
-// Single source of truth — easy to add or remove services later.
+// Single source of truth - easy to add or remove services later.
 const SERVICES = [
   {
     id: 'washpod',
     emoji: '🧺',
-    title: 'Self-Service Laundry — WashPod',
+    title: 'Self-Service Laundry - WashPod',
     image: `${BASE}images/other-services/washpod-laundry.jpg`,
     imageAlt:
       'WashPod self-service laundry facility with industrial washers and a dryer',
     description:
-      'Need a quick wash on the go? Our 24-hour self-service WashPod is perfect for large volumes — duvets, cushions, curtains, sofa covers, and family laundry. Fully automated, easy to use, and open round the clock.',
+      'Need a quick wash on the go? Our 24-hour self-service WashPod is perfect for large volumes - duvets, cushions, curtains, sofa covers, and family laundry. Fully automated, easy to use, and open round the clock.',
     chips: ['Duvets', 'Cushions', 'Curtains', 'Sofa Covers', 'Family Laundry'],
     groups: [
       {
         heading: 'Three machines available',
         items: [
-          { label: 'Machine No. 1 — 20 kg Dryer', subtitle: 'Drying instructions on-screen' },
-          { label: 'Machine No. 2 — 20 kg Washer', subtitle: 'Ideal for large loads' },
-          { label: 'Machine No. 3 — 10 kg Washer', subtitle: 'Smaller loads and quick washes' },
+          { label: 'Machine No. 1 - 20 kg Dryer', subtitle: 'Drying instructions on-screen' },
+          { label: 'Machine No. 2 - 20 kg Washer', subtitle: 'Ideal for large loads' },
+          { label: 'Machine No. 3 - 10 kg Washer', subtitle: 'Smaller loads and quick washes' },
         ],
       },
       {
@@ -42,7 +42,7 @@ const SERVICES = [
     image: `${BASE}images/other-services/atm.jpg`,
     imageAlt: 'CashLinks ATM on-site at Airport Energy',
     description:
-      'Need cash on the go? Our on-site CashLinks ATM offers free cash withdrawals and balance enquiries — no fees, no hassle. Accepts all major cards.',
+      'Need cash on the go? Our on-site CashLinks ATM offers free cash withdrawals and balance enquiries - no fees, no hassle. Accepts all major cards.',
     groups: [
       {
         heading: 'Accepted cards',
@@ -74,7 +74,7 @@ const SERVICES = [
     emoji: '🛣️',
     title: 'Pay Your M50 Toll Here',
     description:
-      'Skip the late fees — pay your M50 toll directly at Airport Energy. Our staff can process your toll payment quickly at the counter, so you stay on top of your road charges without the stress.',
+      'Skip the late fees - pay your M50 toll directly at Airport Energy. Our staff can process your toll payment quickly at the counter, so you stay on top of your road charges without the stress.',
     groups: [
       {
         heading: 'Features',
@@ -95,7 +95,7 @@ const SERVICES = [
     emoji: '🚗',
     title: 'Other Quick Services',
     description:
-      'From phone top-ups to lottery tickets and bill payments — drop in for the little things that make your day easier.',
+      'From phone top-ups to lottery tickets and bill payments - drop in for the little things that make your day easier.',
     groups: [
       {
         heading: 'Also available at the counter',

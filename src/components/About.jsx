@@ -10,7 +10,7 @@ const VALUES = [
   {
     icon: HeartHandshake,
     title: 'Customer-first',
-    body: 'Quick service, fair pricing and friendly faces — day or night.',
+    body: 'Quick service, fair pricing and friendly faces - day or night.',
   },
   {
     icon: Leaf,
@@ -39,7 +39,7 @@ export default function About() {
             Founded by a family of road-trippers, Airport Energy began as a
             single forecourt next to the airport and has grown into a
             community fixture. We blend the speed travellers need with the
-            warmth locals expect — premium fuel, fresh coffee, and a
+            warmth locals expect - premium fuel, fresh coffee, and a
             convenience store stocked for the journey ahead.
           </p>
 
@@ -53,7 +53,7 @@ export default function About() {
                   Our mission
                 </h3>
                 <p className="mt-1 text-slate-600">
-                  To make every stop quick, safe, and genuinely pleasant —
+                  To make every stop quick, safe, and genuinely pleasant -
                   whether you're catching a flight or running errands across
                   town.
                 </p>

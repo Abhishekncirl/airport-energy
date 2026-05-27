@@ -1,7 +1,7 @@
 import { Clock } from 'lucide-react';
 
 // Bold "Open 24/7" banner. Uses the brand charcoal as the background with
-// a green glow — consistent with the hero gradient elsewhere on the site.
+// a green glow - consistent with the hero gradient elsewhere on the site.
 export default function StoreOpen247() {
   return (
     <section className="section bg-slate-50">
@@ -42,7 +42,7 @@ export default function StoreOpen247() {
               <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/85">
                 Our convenience store is open every hour of every day.
                 Whether it’s a late-night snack run, an early-morning coffee,
-                or an emergency top-up of oil and screen wash — we’ve got you
+                or an emergency top-up of oil and screen wash - we’ve got you
                 covered.
               </p>
             </div>

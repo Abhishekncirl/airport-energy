@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brand surfaces — charcoal pulled from the Airport Energy logo background.
+        // Brand surfaces - charcoal pulled from the Airport Energy logo background.
         brand: {
           50:  '#f4f5f6',
           100: '#e6e8ea',
@@ -50,7 +50,7 @@ export default {
         ],
       },
       backgroundImage: {
-        // Dark charcoal hero with subtle green glow — matches the brand mark.
+        // Dark charcoal hero with subtle green glow - matches the brand mark.
         'hero-gradient':
           'radial-gradient(1200px 600px at 10% 0%, rgba(26,166,74,0.22), transparent 60%), radial-gradient(900px 500px at 90% 10%, rgba(255,255,255,0.06), transparent 60%), linear-gradient(180deg, #0f1113 0%, #1a1d20 60%, #23272b 100%)',
       },

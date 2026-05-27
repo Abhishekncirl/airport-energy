@@ -8,9 +8,9 @@ const OFFERS = [
     badge: 'Wednesdays only',
     emoji: '🚗💦',
     title: 'WACKY WEDNESDAYS',
-    subtitle: 'Gold Wash for just €9 — every Wednesday!',
+    subtitle: 'Gold Wash for just €9 - every Wednesday!',
     body:
-      'Every Wednesday, treat your car to our premium Gold Wash for only €9 (normally €14). Save €5 — no booking needed, just drive in.',
+      'Every Wednesday, treat your car to our premium Gold Wash for only €9 (normally €14). Save €5 - no booking needed, just drive in.',
     finePrint: 'Available all day Wednesday. Limited to one wash per vehicle.',
     originalPrice: 14,
     discountPrice: 9,
@@ -23,7 +23,7 @@ const OFFERS = [
     badge: 'Taxi drivers only',
     emoji: '🚕',
     title: 'TAXI DRIVER SPECIAL',
-    subtitle: 'Gold Wash for €9 — every day.',
+    subtitle: 'Gold Wash for €9 - every day.',
     body:
       'Show your taxi licence and get our premium Gold Wash for just €9, any day of the week. Our way of saying thanks to the drivers who keep Ireland moving.',
     finePrint:

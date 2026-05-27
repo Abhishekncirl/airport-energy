@@ -4,7 +4,7 @@ const REASONS = [
   {
     icon: Wrench,
     title: 'Pro-Grade Equipment',
-    body: 'The same machines professional detailers use — without the professional price tag.',
+    body: 'The same machines professional detailers use - without the professional price tag.',
   },
   {
     icon: Clock,
@@ -14,12 +14,12 @@ const REASONS = [
   {
     icon: PiggyBank,
     title: 'Just €1 to Start',
-    body: 'Pay only for the time you use. Every machine, every service — one euro.',
+    body: 'Pay only for the time you use. Every machine, every service - one euro.',
   },
   {
     icon: Layers,
     title: 'All-In-One Bay',
-    body: 'Vacuum, water, air, fragrance, and mat cleaner — all under one neon-lit roof.',
+    body: 'Vacuum, water, air, fragrance, and mat cleaner - all under one neon-lit roof.',
   },
 ];
 

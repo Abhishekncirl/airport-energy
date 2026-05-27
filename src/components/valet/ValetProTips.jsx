@@ -2,9 +2,9 @@ import { Lightbulb } from 'lucide-react';
 
 const TIPS = [
   'Remove large items from your car before vacuuming for the best suction.',
-  'Use the mat cleaner first, then vacuum the interior — saves you a second pass.',
+  'Use the mat cleaner first, then vacuum the interior - saves you a second pass.',
   'Check tyre pressure when the tyres are cold for the most accurate reading.',
-  'Apply fragrance under the seat — not directly on fabric — so it lasts longer.',
+  'Apply fragrance under the seat - not directly on fabric - so it lasts longer.',
 ];
 
 // Compact tip-list block. Slate background so it doesn't compete visually

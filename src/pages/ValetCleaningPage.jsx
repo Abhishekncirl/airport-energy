@@ -11,7 +11,7 @@ import ValetBackCTA from '../components/valet/ValetBackCTA.jsx';
 export default function ValetCleaningPage() {
   useEffect(() => {
     const previous = document.title;
-    document.title = 'Self-Service Valet Centre — Airport Energy';
+    document.title = 'Self-Service Valet Centre - Airport Energy';
     return () => {
       document.title = previous;
     };

@@ -4,7 +4,7 @@ const STEPS = [
   {
     icon: Car,
     title: 'Pull In',
-    body: 'Park next to any available machine — no booking, no waiting.',
+    body: 'Park next to any available machine - no booking, no waiting.',
   },
   {
     icon: CreditCard,
@@ -14,7 +14,7 @@ const STEPS = [
   {
     icon: Sparkles,
     title: 'Get Detailing',
-    body: 'Vacuum, wash, inflate, freshen, or clean mats — all in one visit.',
+    body: 'Vacuum, wash, inflate, freshen, or clean mats - all in one visit.',
   },
 ];
 

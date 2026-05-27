@@ -1,9 +1,9 @@
 import { Clock, Sunrise, MoonStar } from 'lucide-react';
 
 const ROWS = [
-  { day: 'Monday – Friday', hours: '6:00 AM — 8:00 PM' },
-  { day: 'Saturday', hours: '6:30 AM — 8:00 PM' },
-  { day: 'Sunday', hours: '7:00 AM — 8:00 PM' },
+  { day: 'Monday – Friday', hours: '6:00 AM - 8:00 PM' },
+  { day: 'Saturday', hours: '6:30 AM - 8:00 PM' },
+  { day: 'Sunday', hours: '7:00 AM - 8:00 PM' },
 ];
 
 export default function CoffeeHours() {

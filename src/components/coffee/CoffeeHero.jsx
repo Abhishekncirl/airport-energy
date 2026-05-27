@@ -32,7 +32,7 @@ export default function CoffeeHero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            Grounded in Ireland since 1997 — fresh coffee and hot food,
+            Grounded in Ireland since 1997 - fresh coffee and hot food,
             served daily by people who genuinely love what they do.
           </p>
 

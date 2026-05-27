@@ -1,7 +1,7 @@
 import { ArrowLeft, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Footer CTA on the Coffee & Snacks page — gives visitors a clear next step.
+// Footer CTA on the Coffee & Snacks page - gives visitors a clear next step.
 export default function CoffeeBackCTA() {
   return (
     <section className="section bg-brand-900">

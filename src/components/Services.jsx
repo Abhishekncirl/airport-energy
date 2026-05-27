@@ -9,7 +9,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 
-// Each service can optionally have a `href` — if present, the whole card
+// Each service can optionally have a `href` - if present, the whole card
 // becomes a React Router link with a "Learn more →" affordance.
 const SERVICES = [
   {
@@ -21,7 +21,7 @@ const SERVICES = [
   {
     icon: Droplets,
     title: 'Carwash',
-    body: 'Modern WashPod facility — touch-free brushes and powerful jets for a spotless finish in minutes.',
+    body: 'Modern WashPod facility - touch-free brushes and powerful jets for a spotless finish in minutes.',
     tag: 'WashPod',
     href: '/carwash',
     linkLabel: 'View wash packages',
@@ -29,7 +29,7 @@ const SERVICES = [
   {
     icon: Sparkles,
     title: 'Valet Cleaning',
-    body: 'Self-service detailing bay — vacuum, water, air, fragrance and mat cleaner. Pro-grade machines, just €1 per use.',
+    body: 'Self-service detailing bay - vacuum, water, air, fragrance and mat cleaner. Pro-grade machines, just €1 per use.',
     tag: 'Detailing',
     href: '/valet-cleaning',
     linkLabel: 'Explore valet centre',
@@ -37,7 +37,7 @@ const SERVICES = [
   {
     icon: ShoppingBag,
     title: 'Convenience Store',
-    body: 'Car care essentials, fresh sandwiches, cold drinks, sweets and snacks — open every hour of every day.',
+    body: 'Car care essentials, fresh sandwiches, cold drinks, sweets and snacks - open every hour of every day.',
     tag: 'Shop',
     href: '/convenience-store',
     linkLabel: 'Browse the store',
@@ -45,7 +45,7 @@ const SERVICES = [
   {
     icon: LayoutGrid,
     title: 'Other Services',
-    body: 'More than just fuel — self-service laundry, free ATM, M50 toll payments and more, all in one stop.',
+    body: 'More than just fuel - self-service laundry, free ATM, M50 toll payments and more, all in one stop.',
     tag: 'Extras',
     href: '/other-services',
     linkLabel: 'See all services',
@@ -53,7 +53,7 @@ const SERVICES = [
   {
     icon: Coffee,
     title: 'Coffee & Snacks',
-    body: 'Freshly brewed Insomnia coffee, hot food and grab-and-go — plus a special offer for taxi drivers.',
+    body: 'Freshly brewed Insomnia coffee, hot food and grab-and-go - plus a special offer for taxi drivers.',
     tag: 'Cafe',
     href: '/coffee-snacks',
     linkLabel: 'See coffee menu',
@@ -89,7 +89,7 @@ function ServiceCard({ service }) {
     return (
       <Link
         to={href}
-        aria-label={`${title} — ${linkLabel ?? 'Learn more'}`}
+        aria-label={`${title} - ${linkLabel ?? 'Learn more'}`}
         className="reveal card group block cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 hover:-translate-y-1.5 hover:scale-[1.01] hover:shadow-2xl"
       >
         {inner}
@@ -110,7 +110,7 @@ export default function Services() {
             Everything you need, in one stop.
           </h2>
           <p className="mt-4 text-lg text-slate-600">
-            From fuel to a touch-free WashPod carwash to fresh coffee —
+            From fuel to a touch-free WashPod carwash to fresh coffee -
             we’ve designed Airport Energy to get you back on the road in
             minutes.
           </p>

@@ -1,13 +1,13 @@
 // Centralised Supabase client.
 //
 // The URL and anon key are READ from build-time env vars (Vite inlines
-// anything prefixed with VITE_*). Both values are public by design — the
+// anything prefixed with VITE_*). Both values are public by design - the
 // anon key only grants whatever Row-Level Security policies allow.
 //
 // If the env vars are missing (e.g. nobody has configured Supabase yet),
 // we export `null` rather than crashing. The public site falls back to
 // hardcoded prices and the admin panel shows a clear "not configured"
-// message — so the site keeps working out-of-the-box for anyone who clones
+// message - so the site keeps working out-of-the-box for anyone who clones
 // the repo without secrets.
 import { createClient } from '@supabase/supabase-js';
 

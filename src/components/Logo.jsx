@@ -1,4 +1,4 @@
-// Real Airport Energy brand mark — square logo with rounded corners.
+// Real Airport Energy brand mark - square logo with rounded corners.
 // Use Vite's BASE_URL so the asset resolves correctly under the GitHub Pages subpath.
 export default function Logo({ className = 'h-9 w-9' }) {
   return (

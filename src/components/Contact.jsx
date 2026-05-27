@@ -21,7 +21,7 @@ export default function Contact() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // No backend — log the submission and show a confirmation state.
+    // No backend - log the submission and show a confirmation state.
     console.log('Airport Energy contact form submission:', form);
     setSent(true);
     setForm(INITIAL);
@@ -167,7 +167,7 @@ export default function Contact() {
             {sent ? (
               <>
                 <CheckCircle2 className="h-4 w-4" />
-                Message sent — thanks!
+                Message sent - thanks!
               </>
             ) : (
               <>

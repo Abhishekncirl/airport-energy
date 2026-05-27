@@ -10,7 +10,7 @@ export default function CoffeeSnacksPage() {
   // Per-page document title for share previews & browser tab.
   useEffect(() => {
     const previous = document.title;
-    document.title = 'Coffee & Snacks — Airport Energy';
+    document.title = 'Coffee & Snacks - Airport Energy';
     return () => {
       document.title = previous;
     };

@@ -9,7 +9,7 @@ const MACHINES = [
     image: `${BASE}images/valet/vacuum-station.jpg`,
     imageAlt: 'All-in-one self-service vehicle care station',
     description:
-      'Our all-in-one self-service vehicle care station — everything you need for a spotless interior and a perfectly maintained exterior.',
+      'Our all-in-one self-service vehicle care station - everything you need for a spotless interior and a perfectly maintained exterior.',
     groups: [
       {
         heading: 'Four functions',
@@ -17,22 +17,22 @@ const MACHINES = [
           {
             emoji: '🔌',
             text:
-              'Vacuum Cleaner — powerful suction to remove dirt, dust and crumbs from seats, floors, and boot.',
+              'Vacuum Cleaner - powerful suction to remove dirt, dust and crumbs from seats, floors, and boot.',
           },
           {
             emoji: '💧',
             text:
-              'Water Service — high-pressure water for quick exterior rinse and spot cleaning.',
+              'Water Service - high-pressure water for quick exterior rinse and spot cleaning.',
           },
           {
             emoji: '💨',
             text:
-              'Air Service — precision tyre inflation with digital pressure gauge and Gripper system.',
+              'Air Service - precision tyre inflation with digital pressure gauge and Gripper system.',
           },
           {
             emoji: '🌸',
             text:
-              "Fragrance Dispenser — refresh your car's interior with a long-lasting fragrance spray.",
+              "Fragrance Dispenser - refresh your car's interior with a long-lasting fragrance spray.",
           },
         ],
       },
@@ -55,7 +55,7 @@ const MACHINES = [
     image: `${BASE}images/valet/mat-cleaner.jpg`,
     imageAlt: 'Steam-jet mat cleaning machine',
     description:
-      'Professional-grade mat cleaning in seconds — say goodbye to dirty floor mats with our automated steam-jet mat cleaner.',
+      'Professional-grade mat cleaning in seconds - say goodbye to dirty floor mats with our automated steam-jet mat cleaner.',
     groups: [
       {
         heading: 'How to use',
@@ -85,7 +85,7 @@ const MACHINES = [
     emoji: '✨',
     title: 'Self-Service Detailing Bay',
     description:
-      'A clean, well-lit, premium environment designed for serious car care — neon-lit, weather-protected, and equipped with everything you need.',
+      'A clean, well-lit, premium environment designed for serious car care - neon-lit, weather-protected, and equipped with everything you need.',
     groups: [
       {
         heading: 'Features',
@@ -93,7 +93,7 @@ const MACHINES = [
           'Bright hex-LED ceiling lighting for full visibility, even at night',
           'Anti-slip checkered flooring',
           'Wet floor signage and bins for clean operation',
-          'Open access — no booking, no appointment needed',
+          'Open access - no booking, no appointment needed',
           'Multiple stations to avoid waiting in queue',
         ],
       },
@@ -112,7 +112,7 @@ export default function ValetMachines() {
             What’s inside the Valet Centre.
           </h2>
           <p className="mt-4 text-lg text-slate-600">
-            Three stations, one bay — vacuum your interior, jet-clean your
+            Three stations, one bay - vacuum your interior, jet-clean your
             mats, inflate your tyres, and freshen up before hitting the road
             again.
           </p>

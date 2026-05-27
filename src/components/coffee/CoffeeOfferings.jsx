@@ -4,7 +4,7 @@ const ITEMS = [
   {
     icon: Coffee,
     title: 'Fresh Coffee',
-    body: 'Americano, Cappuccino, Latte, Espresso, Flat White, Mocha — brewed with Insomnia Coffee, official partner of the GAA & GPA.',
+    body: 'Americano, Cappuccino, Latte, Espresso, Flat White, Mocha - brewed with Insomnia Coffee, official partner of the GAA & GPA.',
     tag: 'Barista',
   },
   {
@@ -16,7 +16,7 @@ const ITEMS = [
   {
     icon: Flame,
     title: 'Hot Food',
-    body: 'Jambons, sausage rolls, pastries and other grab-and-go hot items — perfect when you’re short on time.',
+    body: 'Jambons, sausage rolls, pastries and other grab-and-go hot items - perfect when you’re short on time.',
     tag: 'Grab & go',
   },
   {
@@ -36,7 +36,7 @@ export default function CoffeeOfferings() {
           <h2 className="section-title mt-3">From the bar, fresh every day.</h2>
           <p className="mt-4 text-lg text-slate-600">
             A focused menu of barista-quality coffee, hot food and travel
-            essentials — designed for drivers, commuters and locals on the
+            essentials - designed for drivers, commuters and locals on the
             move.
           </p>
         </div>

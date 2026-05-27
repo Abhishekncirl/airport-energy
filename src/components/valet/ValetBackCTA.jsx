@@ -1,7 +1,7 @@
 import { ArrowLeft, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Closing CTA — neon-green primary button to stay on-theme for the page.
+// Closing CTA - neon-green primary button to stay on-theme for the page.
 export default function ValetBackCTA() {
   return (
     <section className="section bg-black text-white">
@@ -11,7 +11,7 @@ export default function ValetBackCTA() {
             Find the Valet Centre.
           </h2>
           <p className="mt-4 text-lg text-white/80">
-            Located on-site at Airport Energy — right next to the WashPod.
+            Located on-site at Airport Energy - right next to the WashPod.
             Open every day, around the clock.
           </p>
 

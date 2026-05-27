@@ -1,7 +1,7 @@
 import { ArrowLeft, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Closing CTA for the Carwash page — same shape as the Coffee/Store
+// Closing CTA for the Carwash page - same shape as the Coffee/Store
 // pages so all product pages bottom out on a consistent note.
 export default function CarwashBackCTA() {
   return (
@@ -12,7 +12,7 @@ export default function CarwashBackCTA() {
             Ready for that fresh-paint shine?
           </h2>
           <p className="mt-4 text-lg text-white/80">
-            We’re on Old Airport Road in Collinstown — drive in any day and
+            We’re on Old Airport Road in Collinstown - drive in any day and
             our WashPod will have you sparkling in minutes.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

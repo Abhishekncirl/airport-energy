@@ -4,7 +4,7 @@ const STEPS = [
   {
     icon: Car,
     title: 'Drive In',
-    body: 'Pull up to our WashPod entrance on the forecourt — no booking required.',
+    body: 'Pull up to our WashPod entrance on the forecourt - no booking required.',
   },
   {
     icon: CreditCard,
@@ -14,7 +14,7 @@ const STEPS = [
   {
     icon: Sparkles,
     title: 'Drive Away Shining',
-    body: 'Spotless finish in under 5 minutes — back on the road, looking sharp.',
+    body: 'Spotless finish in under 5 minutes - back on the road, looking sharp.',
   },
 ];
 

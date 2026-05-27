@@ -1,7 +1,7 @@
 import { ArrowRight, BadgePercent, Coffee } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Featured promo banner — taxi driver fuel-up reward.
+// Featured promo banner - taxi driver fuel-up reward.
 // Uses Insomnia brand red (#E30613) as the dominant colour.
 export default function TaxiOffer() {
   return (

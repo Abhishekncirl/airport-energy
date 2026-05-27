@@ -62,7 +62,7 @@ export default function WashPackages() {
           </h2>
           <p className="mt-4 text-lg text-slate-600">
             Every package uses our touch-free, ultra-soft brush technology
-            with premium wax — the difference is how deep the clean goes.
+            with premium wax - the difference is how deep the clean goes.
           </p>
         </div>
 

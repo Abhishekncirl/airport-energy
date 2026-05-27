@@ -47,7 +47,7 @@ export default function Hero() {
         <div className="animate-fade-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/80 backdrop-blur">
             <span className="h-2 w-2 animate-pulse-soft rounded-full bg-fuel-green" />
-            Open now — 24/7 service
+            Open now - 24/7 service
           </span>
 
           <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -60,7 +60,7 @@ export default function Hero() {
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
             Airport Energy is your reliable roadside stop for quality fuel,
             our WashPod carwash and full valet service, a stocked convenience
-            store, and friendly faces — built for travellers and locals
+            store, and friendly faces - built for travellers and locals
             alike.
           </p>
 
@@ -101,7 +101,7 @@ export default function Hero() {
             />
           </div>
 
-          {/* Floating price chip — clickable, links to the Live Fuel Prices
+          {/* Floating price chip - clickable, links to the Live Fuel Prices
               section. Pulls from the same hook as that section so the two
               values can never drift out of sync. */}
           <a

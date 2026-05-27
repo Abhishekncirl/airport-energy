@@ -1,4 +1,4 @@
-// SVG illustration for the About section — stylised forecourt scene at night.
+// SVG illustration for the About section - stylised forecourt scene at night.
 export default function AboutIllustration({ className = '' }) {
   return (
     <svg

@@ -1,6 +1,6 @@
 // Tiny hook that mirrors Supabase's auth session into React state.
 // Components can either subscribe to the full session or just ask for
-// the signed-in user. Refreshes happen automatically — no polling.
+// the signed-in user. Refreshes happen automatically - no polling.
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase.js';
 

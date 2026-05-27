@@ -10,11 +10,11 @@ Built with **React + Vite + Tailwind CSS** and styled with a deep-blue / white /
 
 - Sticky, scroll-aware navigation bar with mobile sheet
 - Premium **Hero** section with gradient + grid backdrop, floating price chip, and animated stats
-- **About Us** — story, mission and core values
-- **Services** — Petrol & Diesel, WashPod Carwash, Valet Cleaning, Convenience Store, Air & Water, Café
-- **Fuel Prices** — live-style price cards (Petrol, Diesel) with trend indicators and "last updated" timestamp
-- **Location** — embedded Google Map, address, 24/7 hours, directions
-- **Contact** — accessible form (logs to `console`), phone, email, social links
+- **About Us** - story, mission and core values
+- **Services** - Petrol & Diesel, WashPod Carwash, Valet Cleaning, Convenience Store, Air & Water, Café
+- **Fuel Prices** - live-style price cards (Petrol, Diesel) with trend indicators and "last updated" timestamp
+- **Location** - embedded Google Map, address, 24/7 hours, directions
+- **Contact** - accessible form (logs to `console`), phone, email, social links
 - Footer with quick links, contact info and social icons
 - Smooth scrolling, reveal-on-scroll animations, hover micro-interactions
 - Fully responsive: mobile, tablet, desktop
@@ -92,10 +92,10 @@ Airport Energy/
 
 Defined in `tailwind.config.js`:
 
-- **Brand blue** — `brand.50` → `brand.950` (deep navy gradients)
-- **Accent orange** — `accent.50` → `accent.900` (CTA + highlights, fuel-pump feel)
-- **Fuel green** — `fuel.green` (status / “open now” indicators)
-- **Hero gradient** — `bg-hero-gradient` utility
+- **Brand blue** - `brand.50` → `brand.950` (deep navy gradients)
+- **Accent orange** - `accent.50` → `accent.900` (CTA + highlights, fuel-pump feel)
+- **Fuel green** - `fuel.green` (status / “open now” indicators)
+- **Hero gradient** - `bg-hero-gradient` utility
 
 Reusable component classes (`src/index.css`):
 
@@ -106,25 +106,25 @@ Reusable component classes (`src/index.css`):
 
 ## 🛡️ Admin Panel (Supabase-backed)
 
-The site ships with an admin panel at **`/admin/login`** that lets authorised staff update the prices shown on the public *Live Fuel Prices* section. It uses [Supabase](https://supabase.com/) for both authentication and storage — no Node/Express backend is needed, so it deploys to GitHub Pages alongside the static site.
+The site ships with an admin panel at **`/admin/login`** that lets authorised staff update the prices shown on the public *Live Fuel Prices* section. It uses [Supabase](https://supabase.com/) for both authentication and storage - no Node/Express backend is needed, so it deploys to GitHub Pages alongside the static site.
 
 ### What's protected
-- `/admin/login` — public, but redirects to dashboard once you're signed in
-- `/admin` and `/admin/dashboard` — require a valid Supabase session (auto-redirect to login otherwise)
+- `/admin/login` - public, but redirects to dashboard once you're signed in
+- `/admin` and `/admin/dashboard` - require a valid Supabase session (auto-redirect to login otherwise)
 
 ### Setup (one-time, ~10 minutes)
 
 **1. Create a Supabase project** at https://supabase.com/dashboard → *New project*. Free tier is fine.
 
 **2. Run the schema** at *SQL Editor → New query*. Paste the entire contents of `supabase/schema.sql` and click *Run*. This creates:
-- `fuel_prices` table (seeded with €1.739 petrol / €1.689 diesel) — public READ
-- `price_changes` audit table — authenticated READ only
-- `update_fuel_price(text, numeric)` RPC — the only way to mutate prices, atomic with audit logging, RLS-checked
+- `fuel_prices` table (seeded with €1.739 petrol / €1.689 diesel) - public READ
+- `price_changes` audit table - authenticated READ only
+- `update_fuel_price(text, numeric)` RPC - the only way to mutate prices, atomic with audit logging, RLS-checked
 
 **3. Tighten authentication** at *Authentication → Providers → Email*:
 - Make sure **Email** is enabled
 - Turn **OFF** *Allow new users to sign up* (so only invited staff can log in)
-- (Optional) *Email templates → Magic Link / Recovery* — customise with Airport Energy branding
+- (Optional) *Email templates → Magic Link / Recovery* - customise with Airport Energy branding
 
 **4. Add your admin users** at *Authentication → Users → Add user → Create new user*:
 - Enter the staff email + a temporary password
@@ -145,7 +145,7 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOi...
 
 Restart `npm run dev`, visit http://localhost:5173/admin/login, and sign in with one of the users you created in step 4. ✅
 
-**6. Make it live** — open *GitHub repo → Settings → Secrets and variables → Actions → New repository secret* and add the same two values as repo secrets named `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. The next push to `main` will redeploy with the keys baked in.
+**6. Make it live** - open *GitHub repo → Settings → Secrets and variables → Actions → New repository secret* and add the same two values as repo secrets named `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. The next push to `main` will redeploy with the keys baked in.
 
 ### Day-to-day use
 - Staff visit `https://<your-site>/admin/login`
@@ -159,7 +159,7 @@ Restart `npm run dev`, visit http://localhost:5173/admin/login, and sign in with
 - **Reset password** → *Authentication → Users → (user) → Send password recovery*
 
 ### Security notes
-- The Supabase URL + anon key are **public** by design — security lives in the database (RLS + the security-definer function), not in keeping the key secret
+- The Supabase URL + anon key are **public** by design - security lives in the database (RLS + the security-definer function), not in keeping the key secret
 - All writes go through `update_fuel_price()`, which checks `auth.uid()` server-side and atomically appends to the audit log
 - Sessions are stored in browser `localStorage` and auto-refresh; Supabase rotates the JWT
 - For production: enable *MFA* in Supabase Auth settings, set a sensible *Password Policy*, and rotate the anon key if you suspect compromise (regenerates in Supabase → invalidates all old sessions)
@@ -180,4 +180,4 @@ Restart `npm run dev`, visit http://localhost:5173/admin/login, and sign in with
 
 ---
 
-© Airport Energy — demo project.
+© Airport Energy - demo project.

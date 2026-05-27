@@ -33,7 +33,7 @@ export default function AdminDashboardPage() {
   // Per-page title
   useEffect(() => {
     const prev = document.title;
-    document.title = 'Admin dashboard — Airport Energy';
+    document.title = 'Admin dashboard - Airport Energy';
     return () => { document.title = prev; };
   }, []);
 

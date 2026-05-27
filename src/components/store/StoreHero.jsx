@@ -32,7 +32,7 @@ export default function StoreHero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            Everything you need for the road — from car care essentials to
+            Everything you need for the road - from car care essentials to
             fresh food and snacks, open every hour of every day.
           </p>
 

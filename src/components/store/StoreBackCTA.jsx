@@ -1,7 +1,7 @@
 import { ArrowLeft, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Closing CTA on the Convenience Store page — mirrors CoffeeBackCTA so the
+// Closing CTA on the Convenience Store page - mirrors CoffeeBackCTA so the
 // two product pages share their footer behaviour.
 export default function StoreBackCTA() {
   return (
@@ -12,7 +12,7 @@ export default function StoreBackCTA() {
             Drop by any time.
           </h2>
           <p className="mt-4 text-lg text-white/80">
-            We’re right on Old Airport Road in Collinstown — open 24 hours,
+            We’re right on Old Airport Road in Collinstown - open 24 hours,
             every day of the year.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

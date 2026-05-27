@@ -1,5 +1,5 @@
 -- =============================================================================
--- Airport Energy — Supabase schema
+-- Airport Energy - Supabase schema
 -- =============================================================================
 -- Run this once in your Supabase project (SQL Editor → New query → Run).
 -- It creates the tables, Row-Level-Security policies and the

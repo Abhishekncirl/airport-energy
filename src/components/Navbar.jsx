@@ -28,7 +28,7 @@ const NAV_LINKS = [
   { to: '#contact', label: 'Contact', kind: 'hash' },
 ];
 
-// Visually separated from the main nav — it's a staff entry point, not a
+// Visually separated from the main nav - it's a staff entry point, not a
 // content link. Rendered after a small divider.
 const ADMIN_LINK = {
   to: '/admin/login',
@@ -59,7 +59,7 @@ export default function Navbar() {
         <SmartLink
           to="#home"
           className="flex items-center gap-3"
-          aria-label="Airport Energy — back to top"
+          aria-label="Airport Energy - back to top"
         >
           <Logo className="h-9 w-9 sm:h-10 sm:w-10" />
           <span
@@ -92,7 +92,7 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-3 lg:flex">
-          {/* Staff entry — lower visual weight than the main "Get in Touch" CTA */}
+          {/* Staff entry - lower visual weight than the main "Get in Touch" CTA */}
           <SmartLink
             to={ADMIN_LINK.to}
             className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${

@@ -6,7 +6,7 @@
 // - Polls every `refreshInterval` ms (default 60s) so the hero chip and the
 //   "Live Fuel Prices" section both reflect admin edits within ~1 minute.
 // - Caches the last successful payload in `localStorage` so a transient
-//   network failure doesn't blank out the cards — we keep the last-known
+//   network failure doesn't blank out the cards - we keep the last-known
 //   values until the next successful fetch.
 // - Exposes a `refresh()` callback for components that want an immediate
 //   re-fetch (e.g. the Refresh button on the prices section).
@@ -51,7 +51,7 @@ function writeCache(rows) {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(rows));
   } catch {
-    // localStorage may be full, blocked (Safari private mode), etc. — ignore.
+    // localStorage may be full, blocked (Safari private mode), etc. - ignore.
   }
 }
 
@@ -105,7 +105,7 @@ export function useFuelPrices({ refreshInterval = 60_000 } = {}) {
       for (const r of data ?? []) {
         byKey[r.fuel_type] = normalise(r);
       }
-      // Only commit if we got at least one valid row — otherwise keep the
+      // Only commit if we got at least one valid row - otherwise keep the
       // existing values rather than blanking the UI.
       if (FUEL_KEYS.some((k) => byKey[k])) {
         if (mountedRef.current) {

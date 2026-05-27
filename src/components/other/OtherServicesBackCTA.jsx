@@ -1,7 +1,7 @@
 import { ArrowLeft, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Closing CTA — mirrors the other product detail pages so the bottom of
+// Closing CTA - mirrors the other product detail pages so the bottom of
 // every dedicated page feels consistent.
 export default function OtherServicesBackCTA() {
   return (
@@ -12,7 +12,7 @@ export default function OtherServicesBackCTA() {
             Discover more at Airport Energy.
           </h2>
           <p className="mt-4 text-lg text-white/80">
-            From fuel to fresh coffee to laundry — everything you need is
+            From fuel to fresh coffee to laundry - everything you need is
             right here, all in one stop.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">

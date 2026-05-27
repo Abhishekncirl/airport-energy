@@ -15,14 +15,14 @@ const CATEGORIES = [
     alt: 'Premium Viand sandwiches displayed in the chiller',
     title: 'Fresh Sandwiches',
     description:
-      "Premium Viand sandwiches made fresh daily — Egg Salad on Malted Brown Bread, The Ultimate BLT, Ploughman's, Cheese Delight and more. Deliciously fresh, perfect for a quick lunch on the go.",
+      "Premium Viand sandwiches made fresh daily - Egg Salad on Malted Brown Bread, The Ultimate BLT, Ploughman's, Cheese Delight and more. Deliciously fresh, perfect for a quick lunch on the go.",
   },
   {
     image: `${BASE}images/convenience-store/roll.png`,
     alt: 'Selection of Viand wraps and rolls ready to grab',
     title: 'Wraps & Rolls',
     description:
-      'Freshly prepared Viand wraps and rolls — Chicken Tikka, Chicken & Bacon, Chicken Stuffing and more. Kept chilled and ready to grab.',
+      'Freshly prepared Viand wraps and rolls - Chicken Tikka, Chicken & Bacon, Chicken Stuffing and more. Kept chilled and ready to grab.',
   },
   {
     image: `${BASE}images/convenience-store/drinks.png`,
@@ -51,7 +51,7 @@ export default function StoreCategories() {
           </h2>
           <p className="mt-4 text-lg text-slate-600">
             From a top-up of engine oil to a fresh BLT, our shelves are
-            curated to get you what you need quickly — and back on the
+            curated to get you what you need quickly - and back on the
             road.
           </p>
         </div>

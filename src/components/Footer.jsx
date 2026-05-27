@@ -31,7 +31,7 @@ export default function Footer() {
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
             Quality fuel, our WashPod carwash & valet service, and a 24/7
-            convenience store — designed for travellers and locals on the
+            convenience store - designed for travellers and locals on the
             move.
           </p>
           <div className="mt-6 flex gap-3">
@@ -109,7 +109,7 @@ export default function Footer() {
         <div className="container-x flex flex-col items-center justify-between gap-3 py-6 text-xs text-slate-500 sm:flex-row">
           <p>© {year} Airport Energy. All rights reserved.</p>
           <p>
-            Made for the road —{' '}
+            Made for the road -{' '}
             <SmartLink to="#home" className="hover:text-accent">
               back to top ↑
             </SmartLink>

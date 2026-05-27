@@ -1,7 +1,7 @@
-// Custom SVG hero illustration — guaranteed to render and stays on-brand.
+// Custom SVG hero illustration - guaranteed to render and stays on-brand.
 // Stylised fuel pump with EV-charge and leaf accents.
 //
-// `petrolPrice` (optional) — live Unleaded 95 price. When supplied the
+// `petrolPrice` (optional) - live Unleaded 95 price. When supplied the
 // pump's centre display shows the live value so the artwork can't drift
 // out of sync with the floating chip + the Live Fuel Prices section.
 // Falls back to a static "€1.74" if omitted (keeps Storybook-style usage

@@ -14,7 +14,7 @@ const HIGHLIGHTS = [
   {
     icon: Gift,
     title: 'Free Essentials',
-    body: 'ATM withdrawals and balance checks — all free.',
+    body: 'ATM withdrawals and balance checks - all free.',
   },
   {
     icon: ShoppingCart,

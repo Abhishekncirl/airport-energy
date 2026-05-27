@@ -1,5 +1,5 @@
 // Reusable promotional banner. Both special-offer cards on the carwash
-// page share this same structure — only the colours, copy and badge change.
+// page share this same structure - only the colours, copy and badge change.
 export default function OfferBanner({
   badge,
   emoji,

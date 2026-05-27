@@ -31,7 +31,7 @@ export default function AdminLoginPage() {
   // Per-page title for the browser tab.
   useEffect(() => {
     const prev = document.title;
-    document.title = 'Admin login — Airport Energy';
+    document.title = 'Admin login - Airport Energy';
     return () => { document.title = prev; };
   }, []);
 
@@ -69,7 +69,7 @@ export default function AdminLoginPage() {
     setSubmitting(false);
 
     if (signInError) {
-      // Supabase returns "Invalid login credentials" — keep the message
+      // Supabase returns "Invalid login credentials" - keep the message
       // generic so we don't reveal which field was wrong.
       setError('Invalid username or password');
       return;

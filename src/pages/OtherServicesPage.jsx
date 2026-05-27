@@ -8,7 +8,7 @@ import OtherServicesBackCTA from '../components/other/OtherServicesBackCTA.jsx';
 export default function OtherServicesPage() {
   useEffect(() => {
     const previous = document.title;
-    document.title = 'Other Services — Airport Energy';
+    document.title = 'Other Services - Airport Energy';
     return () => {
       document.title = previous;
     };

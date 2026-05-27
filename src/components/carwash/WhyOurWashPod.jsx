@@ -14,7 +14,7 @@ const REASONS = [
   {
     icon: Calendar,
     title: 'Open 7 Days a Week',
-    body: 'Quick service from early morning to late evening — fit a wash around any schedule.',
+    body: 'Quick service from early morning to late evening - fit a wash around any schedule.',
   },
   {
     icon: ShieldCheck,

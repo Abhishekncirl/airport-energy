@@ -10,7 +10,7 @@ export default function ConvenienceStorePage() {
   // Per-page document title for browser tab + share previews.
   useEffect(() => {
     const previous = document.title;
-    document.title = 'Convenience Store — Airport Energy';
+    document.title = 'Convenience Store - Airport Energy';
     return () => {
       document.title = previous;
     };

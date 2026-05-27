@@ -40,7 +40,7 @@ export default function FuelPrices() {
             <h2 className="section-title mt-3">Live fuel prices.</h2>
             <p className="mt-4 text-lg text-slate-600">
               Transparent, up-to-the-minute pricing for every grade we stock
-              — refreshed by our team whenever the wholesale rate changes.
+              - refreshed by our team whenever the wholesale rate changes.
             </p>
           </div>
 
