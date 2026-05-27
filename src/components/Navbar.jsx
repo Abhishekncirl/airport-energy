@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Phone, Coffee, ShoppingBag, Lock, Droplets } from 'lucide-react';
+import {
+  Menu,
+  X,
+  Phone,
+  Coffee,
+  ShoppingBag,
+  Lock,
+  Droplets,
+  Sparkles,
+} from 'lucide-react';
 import Logo from './Logo.jsx';
 import SmartLink from './SmartLink.jsx';
 
@@ -8,9 +17,9 @@ import SmartLink from './SmartLink.jsx';
 // `icon`         → optional Lucide icon shown before the label (route links).
 const NAV_LINKS = [
   { to: '#home', label: 'Home', kind: 'hash' },
-  { to: '#about', label: 'About', kind: 'hash' },
   { to: '#prices', label: 'Prices', kind: 'hash' },
   { to: '/carwash', label: 'Wash', kind: 'route', icon: Droplets },
+  { to: '/valet-cleaning', label: 'Valet', kind: 'route', icon: Sparkles },
   { to: '/convenience-store', label: 'Store', kind: 'route', icon: ShoppingBag },
   { to: '/coffee-snacks', label: 'Coffee', kind: 'route', icon: Coffee },
   { to: '#location', label: 'Location', kind: 'hash' },

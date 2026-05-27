@@ -29,8 +29,10 @@ const SERVICES = [
   {
     icon: Sparkles,
     title: 'Valet Cleaning',
-    body: 'Full interior & exterior valet by trained pros — hand-wash, vacuum, dashboard, windows, and tyre dressing.',
+    body: 'Self-service detailing bay — vacuum, water, air, fragrance and mat cleaner. Pro-grade machines, just €1 per use.',
     tag: 'Detailing',
+    href: '/valet-cleaning',
+    linkLabel: 'Explore valet centre',
   },
   {
     icon: ShoppingBag,

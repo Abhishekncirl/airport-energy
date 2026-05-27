@@ -8,6 +8,7 @@ const LINKS = [
   { to: '#services', label: 'Services' },
   { to: '#prices', label: 'Fuel Prices' },
   { to: '/carwash', label: 'WashPod Carwash' },
+  { to: '/valet-cleaning', label: 'Valet Centre' },
   { to: '/convenience-store', label: 'Convenience Store' },
   { to: '/coffee-snacks', label: 'Coffee & Snacks' },
   { to: '#location', label: 'Location' },
