@@ -1,6 +1,8 @@
 import { ArrowRight, ShoppingBag } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import StoreStatusBadge from './StoreStatusBadge.jsx';
+
 // Hero banner for the Convenience Store page. Mirrors the layout of
 // CoffeeHero so the two pages feel like siblings.
 export default function StoreHero() {
@@ -19,10 +21,13 @@ export default function StoreHero() {
       <div className="container-x grid items-center gap-12 pb-20 lg:grid-cols-2 lg:pb-28">
         {/* Copy */}
         <div className="animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/80 backdrop-blur">
-            <ShoppingBag className="h-3.5 w-3.5" />
-            Convenience Store · Open 24/7
-          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white/80 backdrop-blur">
+              <ShoppingBag className="h-3.5 w-3.5" />
+              Convenience Store
+            </span>
+            <StoreStatusBadge />
+          </div>
 
           <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
             Your One-Stop
@@ -33,7 +38,8 @@ export default function StoreHero() {
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
             Everything you need for the road - from car care essentials to
-            fresh food and snacks, open every hour of every day.
+            fresh food, ice cream and snacks. Open early until late, 7 days
+            a week.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">

@@ -37,7 +37,7 @@ const SERVICES = [
   {
     icon: ShoppingBag,
     title: 'Convenience Store',
-    body: 'Car care essentials, fresh sandwiches, cold drinks, sweets and snacks - open every hour of every day.',
+    body: 'Car care essentials, fresh sandwiches, ice cream, cold drinks, sweets and snacks - open 7 days a week.',
     tag: 'Shop',
     href: '/convenience-store',
     linkLabel: 'Browse the store',

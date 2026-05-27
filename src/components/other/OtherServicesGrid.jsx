@@ -91,6 +91,37 @@ const SERVICES = [
       'Tip: Keep your vehicle registration number handy for faster service.',
   },
   {
+    id: 'adblue',
+    emoji: '🛢️',
+    title: 'AdBlue® - BluePlus Diesel Additive',
+    description:
+      'Keep your modern diesel engine running clean and compliant. We stock BluePlus AdBlue® in three convenient sizes - perfect for cars, vans, trucks, and commercial fleets.',
+    accentColor: '#1E4D9B',
+    topTag: 'Available in-store',
+    sizes: [
+      { label: '5 L', sub: 'Cars & small diesel vehicles - top-ups between services' },
+      { label: '10 L', sub: 'Vans, SUVs and family diesel cars' },
+      { label: '18 L', sub: 'Trucks, commercial vehicles and fleet refills' },
+    ],
+    infoBlock: {
+      heading: 'What is AdBlue?',
+      body:
+        'AdBlue® is a high-purity urea solution required by most modern diesel vehicles (Euro 6 and above) to reduce harmful NOx emissions. Running out of AdBlue can stop your engine from starting - keep a spare bottle in the boot.',
+    },
+    groups: [
+      {
+        heading: 'Features',
+        items: [
+          'BluePlus - trusted Irish supplier',
+          'ISO 22241 certified quality',
+          'Suitable for all SCR-equipped diesel engines',
+          'Available in-store during opening hours',
+          'Trade and fleet bulk orders welcome - ask at the counter',
+        ],
+      },
+    ],
+  },
+  {
     id: 'quick-services',
     emoji: '🚗',
     title: 'Other Quick Services',

@@ -1,4 +1,4 @@
-import { Leaf, ShieldCheck, Zap } from 'lucide-react';
+import { CalendarDays, Leaf, ShieldCheck, Zap } from 'lucide-react';
 
 const REASONS = [
   {
@@ -15,6 +15,12 @@ const REASONS = [
     icon: Zap,
     title: 'Quick & Easy',
     body: 'In, out, and back on the road in minutes.',
+  },
+  {
+    icon: CalendarDays,
+    title: 'Open 7 Days',
+    body:
+      "From 6 AM Monday to Saturday and 7 AM on Sunday - we're here when you need us.",
   },
 ];
 

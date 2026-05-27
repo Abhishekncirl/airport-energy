@@ -38,6 +38,13 @@ const CATEGORIES = [
     description:
       'Cadbury Dairy Milk, KitKat Chunky, Snickers, Kinder Bueno, Lindor, Aero, Mentos, Polos, Halls, Strepsils and a huge selection of confectionery and mints.',
   },
+  {
+    image: `${BASE}images/convenience-store/ice-cream.jpg`,
+    alt: 'Freezer stocked with Magnum, Solero, Brunch and Exotic ice creams',
+    title: 'Ice Cream & Frozen Treats',
+    description:
+      'Beat the heat or treat yourself any time of year. Our freezer is stocked with all the classics - Magnum Classic, Solero Exotic, Brunch Crumbly Biscuit and more. Perfect for a quick sweet stop on the go.',
+  },
 ];
 
 export default function StoreCategories() {
