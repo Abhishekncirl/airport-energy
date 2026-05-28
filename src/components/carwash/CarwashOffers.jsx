@@ -1,8 +1,8 @@
 import OfferBanner from './OfferBanner.jsx';
 
-// Two side-by-side promo banners. Wacky Wednesdays uses warm yellow/orange
-// (matches the in-store posters); Taxi Driver Special uses Insomnia red
-// to stay visually consistent with the Coffee page's taxi promo.
+// Single promo banner: Wacky Wednesdays. The taxi-driver discount used
+// to live here too but has been removed at the client's request (kept
+// as a word-of-mouth perk only).
 const OFFERS = [
   {
     badge: 'Wednesdays only',
@@ -19,22 +19,6 @@ const OFFERS = [
       'linear-gradient(135deg, #fbbf24 0%, #f59e0b 45%, #ea580c 100%)',
     ribbonColor: 'rgba(120, 53, 15, 0.55)',
   },
-  {
-    badge: 'Taxi drivers only',
-    emoji: '🚕',
-    title: 'TAXI DRIVER SPECIAL',
-    subtitle: 'Gold Wash for €9 - every day.',
-    body:
-      'Show your taxi licence and get our premium Gold Wash for just €9, any day of the week. Our way of saying thanks to the drivers who keep Ireland moving.',
-    finePrint:
-      'Valid taxi licence must be presented at the WashPod kiosk. One discounted wash per visit.',
-    originalPrice: 14,
-    discountPrice: 9,
-    ribbon: 'Driver reward',
-    background:
-      'linear-gradient(135deg, #E30613 0%, #b8050f 45%, #7a0008 100%)',
-    ribbonColor: 'rgba(0, 0, 0, 0.45)',
-  },
 ];
 
 export default function CarwashOffers() {
@@ -42,11 +26,13 @@ export default function CarwashOffers() {
     <section className="section bg-slate-50">
       <div className="container-x">
         <div className="reveal mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Special offers</span>
+          <span className="eyebrow">Special offer</span>
           <h2 className="section-title mt-3">Save on your next wash.</h2>
         </div>
 
-        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-2">
+        {/* Single offer - centred and capped at ~720px so it doesn't
+            stretch full-width on desktop now that we only have one card. */}
+        <div className="mx-auto mt-12 grid max-w-2xl items-stretch gap-6">
           {OFFERS.map((o) => (
             <OfferBanner key={o.title} {...o} />
           ))}

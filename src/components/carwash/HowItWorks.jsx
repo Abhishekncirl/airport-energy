@@ -4,7 +4,7 @@ const STEPS = [
   {
     icon: Car,
     title: 'Drive In',
-    body: 'Pull up to our WashPod entrance on the forecourt - no booking required.',
+    body: 'Pull up to our car wash entrance on the forecourt - no booking required.',
   },
   {
     icon: CreditCard,

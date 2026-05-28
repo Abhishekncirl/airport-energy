@@ -11,7 +11,7 @@ export default function ValetBackCTA() {
             Find the Valet Centre.
           </h2>
           <p className="mt-4 text-lg text-white/80">
-            Located on-site at Airport Energy - right next to the WashPod.
+            Located on-site at Airport Energy - right next to the car wash.
             Open every day, around the clock.
           </p>
 

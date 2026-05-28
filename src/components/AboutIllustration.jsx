@@ -149,12 +149,12 @@ export default function AboutIllustration({ className = '' }) {
         strokeLinecap="round"
       />
 
-      {/* Floating WashPod badge */}
+      {/* Floating Car Wash badge */}
       <g transform="translate(490 380)">
         <rect width="160" height="56" rx="14" fill="#1a1d20" stroke="#1aa64a" strokeOpacity="0.5" />
         <circle cx="30" cy="28" r="14" fill="#1aa64a" />
         <path d="M30 18 C 24 26, 22 30, 22 34 a 8 8 0 0 0 16 0 c 0 -4 -2 -8 -8 -16 z" fill="#ffffff" />
-        <text x="54" y="25" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">WashPod Carwash</text>
+        <text x="54" y="25" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">Car Wash</text>
         <text x="54" y="40" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="10" fill="#a4abb1">Touch-free • Valet</text>
       </g>
 

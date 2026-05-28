@@ -59,7 +59,7 @@ export default function CoffeeHours() {
           </ul>
 
           <p className="mt-4 rounded-xl bg-accent/10 px-4 py-3 text-sm text-accent-900">
-            ☕ Forecourt, store and WashPod carwash remain open 24 / 7.
+            ☕ Forecourt and convenience store remain open through the day, every day.
           </p>
         </div>
       </div>

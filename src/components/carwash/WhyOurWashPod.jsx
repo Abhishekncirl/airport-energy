@@ -28,7 +28,7 @@ export default function WhyOurWashPod() {
     <section className="section bg-slate-50">
       <div className="container-x">
         <div className="reveal mx-auto max-w-2xl text-center">
-          <span className="eyebrow">Why our WashPod</span>
+          <span className="eyebrow">Why our car wash</span>
           <h2 className="section-title mt-3">
             Better for your car. Better for the planet.
           </h2>

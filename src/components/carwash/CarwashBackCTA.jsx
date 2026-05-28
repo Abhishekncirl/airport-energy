@@ -13,7 +13,7 @@ export default function CarwashBackCTA() {
           </h2>
           <p className="mt-4 text-lg text-white/80">
             We’re on Old Airport Road in Collinstown - drive in any day and
-            our WashPod will have you sparkling in minutes.
+            our car wash will have you sparkling in minutes.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link to="/#location" className="btn-primary">

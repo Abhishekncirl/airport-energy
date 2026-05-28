@@ -7,7 +7,7 @@ const LINKS = [
   { to: '#about', label: 'About' },
   { to: '#services', label: 'Services' },
   { to: '#prices', label: 'Fuel Prices' },
-  { to: '/carwash', label: 'WashPod Carwash' },
+  { to: '/carwash', label: 'Car Wash' },
   { to: '/valet-cleaning', label: 'Valet Centre' },
   { to: '/convenience-store', label: 'Convenience Store' },
   { to: '/coffee-snacks', label: 'Coffee & Snacks' },
@@ -30,9 +30,9 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
-            Quality fuel, our WashPod carwash & valet service, and a 24/7
-            convenience store - designed for travellers and locals on the
-            move.
+            Quality fuel, a touch-free car wash, full valet service and a
+            convenience store open 7 days a week - designed for travellers
+            and locals on the move.
           </p>
           <div className="mt-6 flex gap-3">
             {[

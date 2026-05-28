@@ -165,7 +165,7 @@ export default function HeroIllustration({ className = '', petrolPrice }) {
         <rect x="-6" y="22" width="16" height="26" rx="4" fill="#10843a" />
       </g>
 
-      {/* Floating WashPod badge */}
+      {/* Floating Car Wash badge */}
       <g transform="translate(110 160)" filter="url(#soft-shadow)">
         <rect width="120" height="64" rx="14" fill="#1a1d20" stroke="#1aa64a" strokeOpacity="0.5" />
         <circle cx="32" cy="32" r="16" fill="#1aa64a" />
@@ -174,8 +174,8 @@ export default function HeroIllustration({ className = '', petrolPrice }) {
           d="M32 20 C 26 28, 24 32, 24 36 a 8 8 0 0 0 16 0 c 0 -4 -2 -8 -8 -16 z"
           fill="#ffffff"
         />
-        <text x="58" y="29" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">WashPod</text>
-        <text x="58" y="44" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="9" fill="#a4abb1" letterSpacing="1">Carwash</text>
+        <text x="58" y="29" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">Car Wash</text>
+        <text x="58" y="44" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="9" fill="#a4abb1" letterSpacing="1">Touch-Free</text>
       </g>
 
       {/* Floating "24/7" badge */}

@@ -11,7 +11,7 @@ export default function CarwashPage() {
   // Per-page document title for browser tab + share previews.
   useEffect(() => {
     const previous = document.title;
-    document.title = 'WashPod Carwash - Airport Energy';
+    document.title = 'Car Wash - Airport Energy';
     return () => {
       document.title = previous;
     };

@@ -46,12 +46,12 @@ export default function CarwashHero() {
         <div className="absolute inset-x-0 bottom-0 pt-32">
           <div className="container-x pb-10 sm:pb-14">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur">
-              WashPod · Open daily
+              Car Wash · Open daily
             </span>
             <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-white drop-shadow-lg sm:text-5xl lg:text-6xl">
               Airport Energy{' '}
               <span className="bg-gradient-to-r from-accent-300 via-accent to-accent-600 bg-clip-text text-transparent">
-                WashPod.
+                Car Wash.
               </span>
             </h1>
             <p className="mt-4 max-w-2xl text-base text-white/85 drop-shadow sm:text-lg">

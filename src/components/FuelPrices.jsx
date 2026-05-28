@@ -1,11 +1,4 @@
-import {
-  Fuel,
-  Loader2,
-  Minus,
-  RefreshCw,
-  TrendingDown,
-  TrendingUp,
-} from 'lucide-react';
+import { Fuel, Loader2, RefreshCw } from 'lucide-react';
 
 import { useFuelPrices } from '../hooks/useFuelPrices.js';
 import { formatRelativeTime } from '../utils/formatRelativeTime.js';
@@ -63,27 +56,11 @@ export default function FuelPrices() {
           {FUELS.map(({ key, label, icon: Icon, accent }) => {
             const row = rows[key];
             const price = row?.price;
-            const previous = row?.previous_price;
-            const delta =
-              price != null && previous != null
-                ? Number((price - previous).toFixed(3))
-                : null;
 
-            // Falling price = customer-friendly = green; rising = amber.
-            const TrendIcon =
-              delta == null
-                ? Minus
-                : delta < 0
-                  ? TrendingDown
-                  : delta > 0
-                    ? TrendingUp
-                    : Minus;
-            const trendColor =
-              delta == null || delta === 0
-                ? 'text-slate-500'
-                : delta < 0
-                  ? 'text-fuel-green'
-                  : 'text-amber-600';
+            // Note: `previous_price` still comes back from the hook (and is
+            // tracked in the audit log on save), but per client request we
+            // do NOT show a "vs last update" comparison here. Only the
+            // current live price is surfaced to the public.
 
             return (
               <div
@@ -110,16 +87,6 @@ export default function FuelPrices() {
                     </span>
                   )}
                 </p>
-                {delta != null && (
-                  <p
-                    className={`mt-2 inline-flex items-center gap-1 text-sm font-semibold ${trendColor}`}
-                  >
-                    <TrendIcon className="h-4 w-4" />
-                    {delta === 0
-                      ? 'No change vs last update'
-                      : `${delta > 0 ? '+' : ''}${delta.toFixed(3)} vs last update`}
-                  </p>
-                )}
               </div>
             );
           })}

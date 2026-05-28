@@ -98,7 +98,7 @@ const MACHINES = [
         ],
       },
     ],
-    footer: 'On-site at Airport Energy, right next to the WashPod.',
+    footer: 'On-site at Airport Energy, right next to the car wash.',
   },
 ];
 

@@ -1,23 +1,9 @@
 import WashPackageCard from './WashPackageCard.jsx';
 
-// Three tiers in low-to-high price order on mobile, high-emphasis tier in
-// the centre on desktop (we render Silver/Gold/Bronze and feature Gold).
+// Tiers in merit order: Gold (highest) > Silver > Bronze.
+// Gold is featured so it gets the "Most popular" ribbon AND remains the
+// first card visitors see on every viewport.
 const TIERS = [
-  {
-    tier: 'Silver',
-    price: 12,
-    accentColor: '#C0C0C0',
-    textColor: '#5A6066',
-    includes: [
-      'LED Foam Pre-Soak',
-      'Alloy Rim Prep',
-      'Full Contouring High-Pressure Wash',
-      'Ultra Soft Brush Wash',
-      'High Pressure Wheel Wash',
-      'Premium Wax with Rain Shield Protection',
-      'Classic Drying',
-    ],
-  },
   {
     tier: 'Gold',
     price: 14,
@@ -33,6 +19,21 @@ const TIERS = [
       'Premium Wax with Rain Shield Protection',
       'Premium Foam Polish with Soft Brush Buffing',
       'VIP Drying',
+    ],
+  },
+  {
+    tier: 'Silver',
+    price: 12,
+    accentColor: '#C0C0C0',
+    textColor: '#5A6066',
+    includes: [
+      'LED Foam Pre-Soak',
+      'Alloy Rim Prep',
+      'Full Contouring High-Pressure Wash',
+      'Ultra Soft Brush Wash',
+      'High Pressure Wheel Wash',
+      'Premium Wax with Rain Shield Protection',
+      'Classic Drying',
     ],
   },
   {
