@@ -30,9 +30,9 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-400">
-            Quality fuel, a touch-free car wash, full valet service and a
-            convenience store open 7 days a week - designed for travellers
-            and locals on the move.
+            Quality fuel, a car wash, full valet service and a convenience
+            store open 7 days a week - designed for travellers and locals
+            on the move.
           </p>
           <div className="mt-6 flex gap-3">
             {[

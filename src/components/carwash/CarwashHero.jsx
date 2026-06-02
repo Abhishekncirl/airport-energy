@@ -55,7 +55,7 @@ export default function CarwashHero() {
               </span>
             </h1>
             <p className="mt-4 max-w-2xl text-base text-white/85 drop-shadow sm:text-lg">
-              Touch-free, brush-and-jet wash - your car spotless in minutes.
+              Brush-and-jet wash - your car spotless in minutes.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">

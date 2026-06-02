@@ -155,7 +155,7 @@ export default function AboutIllustration({ className = '' }) {
         <circle cx="30" cy="28" r="14" fill="#1aa64a" />
         <path d="M30 18 C 24 26, 22 30, 22 34 a 8 8 0 0 0 16 0 c 0 -4 -2 -8 -8 -16 z" fill="#ffffff" />
         <text x="54" y="25" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">Car Wash</text>
-        <text x="54" y="40" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="10" fill="#a4abb1">Touch-free • Valet</text>
+        <text x="54" y="40" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="10" fill="#a4abb1">Open Daily • Valet</text>
       </g>
 
       {/* Leaf accent */}

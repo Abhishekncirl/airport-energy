@@ -3,7 +3,7 @@ import { Calendar, Droplets, Leaf, ShieldCheck } from 'lucide-react';
 const REASONS = [
   {
     icon: Droplets,
-    title: 'Touch-Free Technology',
+    title: 'Soft-Brush Wash',
     body: 'Soft brushes and high-pressure jets protect your paint while still cutting through stubborn grime.',
   },
   {

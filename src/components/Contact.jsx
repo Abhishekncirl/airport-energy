@@ -60,11 +60,6 @@ export default function Contact() {
           <h2 className="section-title mt-3">
             Questions? We're here, around the clock.
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            Reach out about fleet accounts, carwash & valet bookings, lost
-            items or just to say hi.
-          </p>
-
           <ul className="mt-8 space-y-5">
             <li className="flex items-start gap-4">
               <div className="rounded-xl bg-brand-900 p-3 text-white">

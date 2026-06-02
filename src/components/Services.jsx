@@ -21,7 +21,7 @@ const SERVICES = [
   {
     icon: Droplets,
     title: 'Car Wash',
-    body: 'Modern touch-free car wash - soft brushes and powerful jets for a spotless finish in minutes.',
+    body: 'Modern car wash with soft brushes and powerful jets for a spotless finish in minutes.',
     tag: 'Car Wash',
     href: '/carwash',
     linkLabel: 'View wash packages',
@@ -110,8 +110,8 @@ export default function Services() {
             Everything you need, in one stop.
           </h2>
           <p className="mt-4 text-lg text-slate-600">
-            From fuel to a touch-free car wash to fresh coffee - we’ve
-            designed Airport Energy to get you back on the road in minutes.
+            From fuel to a car wash to fresh coffee - we’ve designed
+            Airport Energy to get you back on the road in minutes.
           </p>
         </div>
 
