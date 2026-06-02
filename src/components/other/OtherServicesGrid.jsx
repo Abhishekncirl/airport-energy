@@ -134,7 +134,6 @@ const SERVICES = [
           'Lottery & Scratch Cards',
           'Bill Payments (utilities, top-ups)',
           'Phone Top-Ups (all major networks)',
-          'Postage Stamps',
         ],
       },
     ],

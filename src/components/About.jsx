@@ -5,7 +5,7 @@ const VALUES = [
   {
     icon: ShieldCheck,
     title: 'Quality fuel',
-    body: 'Every litre meets EN-228 / EN-590 standards and is tested at every delivery.',
+    body: 'Every litre meets EN-228 / EN-590 standards.',
   },
   {
     icon: HeartHandshake,

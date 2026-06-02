@@ -58,10 +58,10 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">
-            Airport Energy is your reliable roadside stop for quality fuel,
-            a touch-free car wash and full valet service, a stocked
-            convenience store, and friendly faces - built for travellers
-            and locals alike.
+            Airport Energy is your reliable roadside stop for quality
+            fuel, a car wash and full valet service, a stocked convenience
+            store, and friendly faces - built for travellers and locals
+            alike.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">
