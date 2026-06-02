@@ -15,7 +15,7 @@ const VALUES = [
   {
     icon: Leaf,
     title: 'Spotless cars',
-    body: 'Our car wash and valet team keep your vehicle clean inside and out.',
+    body: 'Our car wash and self-service valet centre help you keep your vehicle clean inside and out.',
   },
 ];
 
