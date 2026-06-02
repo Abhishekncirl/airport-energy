@@ -8,7 +8,7 @@ import { formatRelativeTime } from '../utils/formatRelativeTime.js';
 const STATS = [
   { icon: Clock, label: 'Open', value: '24 / 7' },
   { icon: Fuel, label: 'Fuel grades', value: 'Petrol & Diesel' },
-  { icon: Droplets, label: 'Car Wash', value: 'Touch-Free' },
+  { icon: Droplets, label: 'Car Wash', value: 'Open Daily' },
 ];
 
 export default function Hero() {

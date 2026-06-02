@@ -175,7 +175,7 @@ export default function HeroIllustration({ className = '', petrolPrice }) {
           fill="#ffffff"
         />
         <text x="58" y="29" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="700" fontSize="11" fill="#ffffff">Car Wash</text>
-        <text x="58" y="44" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="9" fill="#a4abb1" letterSpacing="1">Touch-Free</text>
+        <text x="58" y="44" fontFamily="Inter, Helvetica, Arial, sans-serif" fontWeight="600" fontSize="9" fill="#a4abb1" letterSpacing="1">Open Daily</text>
       </g>
 
       {/* Floating "24/7" badge */}
