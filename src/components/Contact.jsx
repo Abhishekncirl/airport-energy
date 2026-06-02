@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   Mail,
   Phone,
-  MessageCircle,
   Send,
   CheckCircle2,
   Facebook,
@@ -91,19 +90,6 @@ export default function Contact() {
                 >
                   airportmotorsholdingsltd@gmail.com
                 </a>
-              </div>
-            </li>
-            <li className="flex items-start gap-4">
-              <div className="rounded-xl bg-fuel-green p-3 text-white">
-                <MessageCircle className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                  Live support
-                </p>
-                <p className="text-base font-semibold text-brand-900">
-                  Chat available on the forecourt and in-store, 24/7.
-                </p>
               </div>
             </li>
           </ul>
