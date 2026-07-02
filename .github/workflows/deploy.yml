@@ -44,9 +44,15 @@ jobs:
 
       # SPA fallback: GitHub Pages serves 404.html for unknown paths.
       # Copying index.html → 404.html lets React Router handle deep links
-      # like /airport-energy/coffee-snacks on first load.
-      - name: Add SPA 404 fallback
-        run: cp dist/index.html dist/404.html
+      # like /coffee-snacks on first load.
+      #
+      # The repo-root CNAME is copied into the artifact so GitHub Pages
+      # picks up the custom domain (Pages-via-Actions only reads the
+      # artifact, not the repo root).
+      - name: Add SPA 404 fallback + CNAME
+        run: |
+          cp dist/index.html dist/404.html
+          cp CNAME dist/CNAME
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

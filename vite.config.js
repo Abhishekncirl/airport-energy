@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Repo path on GitHub Pages: https://<user>.github.io/airport-energy/
-// `base` only kicks in for production builds; `npm run dev` stays at "/".
-export default defineConfig(({ command }) => ({
+// Site is served from the custom domain www.airportenergy.ie via GitHub
+// Pages, so `base` is '/'. (It was '/airport-energy/' back when the site
+// lived at abhishekncirl.github.io/airport-energy/.)
+export default defineConfig({
   plugins: [react()],
-  base: command === 'build' ? '/airport-energy/' : '/',
+  base: '/',
   server: {
     port: 5173,
     open: false,
   },
-}));
+});
