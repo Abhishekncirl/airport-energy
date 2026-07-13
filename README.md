@@ -104,67 +104,46 @@ Reusable component classes (`src/index.css`):
 
 ---
 
-## 🛡️ Admin Panel (Supabase-backed)
+## 🛡️ Admin Panel (Firebase-backed)
 
-The site ships with an admin panel at **`/admin/login`** that lets authorised staff update the prices shown on the public *Live Fuel Prices* section. It uses [Supabase](https://supabase.com/) for both authentication and storage - no Node/Express backend is needed, so it deploys to GitHub Pages alongside the static site.
+The site ships with an admin panel at **`/admin/login`** that lets authorised staff update the prices shown on the public *Live Fuel Prices* section. It uses [Firebase](https://firebase.google.com/) (Auth + Firestore) - no server backend, so it deploys to GitHub Pages alongside the static site, and the free Spark plan **never pauses for inactivity**.
 
 ### What's protected
 - `/admin/login` - public, but redirects to dashboard once you're signed in
-- `/admin` and `/admin/dashboard` - require a valid Supabase session (auto-redirect to login otherwise)
+- `/admin` and `/admin/dashboard` - require a Firebase session (auto-redirect to login otherwise)
 
 ### Setup (one-time, ~10 minutes)
 
-**1. Create a Supabase project** at https://supabase.com/dashboard → *New project*. Free tier is fine.
+**1. Create a Firebase project** at https://console.firebase.google.com -> *Add project*. Free Spark plan is fine; Google Analytics can stay off.
 
-**2. Run the schema** at *SQL Editor → New query*. Paste the entire contents of `supabase/schema.sql` and click *Run*. This creates:
-- `fuel_prices` table (seeded with €1.739 petrol / €1.689 diesel) - public READ
-- `price_changes` audit table - authenticated READ only
-- `update_fuel_price(text, numeric)` RPC - the only way to mutate prices, atomic with audit logging, RLS-checked
+**2. Enable email/password sign-in** at *Build -> Authentication -> Get started -> Sign-in method -> Email/Password -> Enable*.
 
-**3. Tighten authentication** at *Authentication → Providers → Email*:
-- Make sure **Email** is enabled
-- Turn **OFF** *Allow new users to sign up* (so only invited staff can log in)
-- (Optional) *Email templates → Magic Link / Recovery* - customise with Airport Energy branding
+**3. Add your staff users** at *Authentication -> Users -> Add user* (email + password each). There is no public sign-up flow in the app, so only users you create here can log in.
 
-**4. Add your admin users** at *Authentication → Users → Add user → Create new user*:
-- Enter the staff email + a temporary password
-- Tick *Auto Confirm User* so they can sign in immediately
-- Repeat for every staff member who needs to update prices
+**4. Create the Firestore database** at *Build -> Firestore Database -> Create database -> Production mode* (pick the europe-west region for Ireland).
 
-**5. Wire up the frontend** with the two public keys from *Project Settings → API*:
+**5. Publish the security rules**: open *Firestore Database -> Rules*, replace the contents with the file `firestore.rules` from this repo, and click *Publish*. This gives the public read-only access to `fuel_prices` and staff-only, validated writes with an append-only `price_changes` audit log.
 
-```bash
-cp .env.example .env.local
-# then edit .env.local and paste the two values
-```
+**6. Wire up the frontend**: in the Firebase console go to *Project settings -> General -> Your apps -> Add app -> Web*, register the app (no hosting needed), and copy the `firebaseConfig` values into `FIREBASE_CONFIG` in `src/lib/firebase.js`. The config is public by design - committing it is safe and expected.
 
-```env
-VITE_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOi...
-```
-
-Restart `npm run dev`, visit http://localhost:5173/admin/login, and sign in with one of the users you created in step 4. ✅
-
-**6. Make it live** - open *GitHub repo → Settings → Secrets and variables → Actions → New repository secret* and add the same two values as repo secrets named `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. The next push to `main` will redeploy with the keys baked in.
+**7. Push to `main`.** The site redeploys with Firebase wired in. The first price save in the admin dashboard creates the `fuel_prices` documents automatically - no manual seeding.
 
 ### Day-to-day use
 - Staff visit `https://<your-site>/admin/login`
 - They edit petrol/diesel prices on the dashboard and click *Save changes*
-- The public *Live Fuel Prices* section updates the next time anyone loads or refreshes the homepage
-- Every change is recorded in `price_changes` (timestamp, old price, new price, user email)
+- The public *Live Fuel Prices* section updates the next time anyone loads or refreshes the homepage (it polls every 60 s)
+- Every change is recorded in the `price_changes` collection (timestamp, old price, new price, staff email)
 
 ### Managing admins
-- **Add** a new staff member → Supabase *Authentication → Users → Add user*
-- **Remove** access → delete that user (or set them to *Banned*)
-- **Reset password** → *Authentication → Users → (user) → Send password recovery*
+- **Add** a staff member -> Firebase *Authentication -> Users -> Add user*
+- **Remove** access -> delete or disable that user
+- **Reset password** -> *Authentication -> Users -> (menu) -> Reset password*
 
 ### Security notes
-- The Supabase URL + anon key are **public** by design - security lives in the database (RLS + the security-definer function), not in keeping the key secret
-- All writes go through `update_fuel_price()`, which checks `auth.uid()` server-side and atomically appends to the audit log
-- Sessions are stored in browser `localStorage` and auto-refresh; Supabase rotates the JWT
-- For production: enable *MFA* in Supabase Auth settings, set a sensible *Password Policy*, and rotate the anon key if you suspect compromise (regenerates in Supabase → invalidates all old sessions)
-
----
+- The Firebase web config is **public** by design - security lives in Firestore rules + Firebase Auth, not in hiding the config
+- Price updates and their audit entries commit in a single atomic batch; the audit log is append-only (rules forbid update/delete)
+- Rules validate writes server-side: only `petrol`/`diesel` docs, numeric price, sane range
+- Sessions auto-refresh; sign-out is immediate
 
 ## 🔮 Future Enhancements
 

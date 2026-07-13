@@ -2,18 +2,19 @@ import { ExternalLink, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import Logo from '../Logo.jsx';
-import { supabase } from '../../lib/supabase.js';
-import { useSupabaseAuth } from '../../hooks/useSupabaseAuth.js';
+import { auth } from '../../lib/firebase.js';
+import { useFirebaseAuth } from '../../hooks/useFirebaseAuth.js';
+import { signOut } from 'firebase/auth';
 
 // Top bar for every authenticated admin screen.
 // Keeps the chrome consistent and gives the user a single, obvious logout.
 export default function AdminLayout({ children }) {
-  const { user } = useSupabaseAuth();
+  const { user } = useFirebaseAuth();
   const navigate = useNavigate();
 
   const onLogout = async () => {
-    if (!supabase) return;
-    await supabase.auth.signOut();
+    if (!auth) return;
+    await signOut(auth);
     navigate('/admin/login', { replace: true });
   };
 

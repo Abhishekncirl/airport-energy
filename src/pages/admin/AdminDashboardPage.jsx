@@ -1,9 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AlertCircle, CheckCircle2, Loader2, RotateCcw, Save } from 'lucide-react';
+import {
+  collection,
+  doc,
+  getDocs,
+  serverTimestamp,
+  writeBatch,
+} from 'firebase/firestore';
 
 import AdminLayout from '../../components/admin/AdminLayout.jsx';
 import FuelPriceEditor from '../../components/admin/FuelPriceEditor.jsx';
-import { supabase } from '../../lib/supabase.js';
+import { auth, db } from '../../lib/firebase.js';
 
 const FUELS = [
   { key: 'petrol', label: 'Petrol (Unleaded 95)' },
@@ -13,8 +20,16 @@ const FUELS = [
 // Auto-dismiss toasts after this many ms.
 const TOAST_MS = 4000;
 
+// Firestore Timestamp -> ISO string (FuelPriceEditor expects ISO).
+function tsToIso(ts) {
+  if (!ts) return null;
+  if (typeof ts === 'string') return ts;
+  if (typeof ts.toDate === 'function') return ts.toDate().toISOString();
+  return null;
+}
+
 export default function AdminDashboardPage() {
-  // Map of { petrol: row, diesel: row } from Supabase.
+  // Map of { petrol: row, diesel: row } from Firestore.
   const [rows, setRows] = useState({});
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
@@ -45,26 +60,28 @@ export default function AdminDashboardPage() {
   }, [toast]);
 
   const loadPrices = useCallback(async () => {
-    if (!supabase) return;
+    if (!db) return;
     setLoading(true);
     setLoadError(null);
-    const { data, error } = await supabase
-      .from('fuel_prices')
-      .select('fuel_type, price, previous_price, updated_at, updated_by')
-      .in('fuel_type', FUELS.map((f) => f.key));
-
-    if (error) {
-      setLoadError(error.message);
+    try {
+      const snap = await getDocs(collection(db, 'fuel_prices'));
+      const byKey = {};
+      snap.forEach((d) => {
+        const data = d.data();
+        byKey[d.id] = {
+          fuel_type: d.id,
+          price: Number(data.price),
+          previous_price:
+            data.previous_price != null ? Number(data.previous_price) : null,
+          updated_at: tsToIso(data.updated_at),
+        };
+      });
+      setRows(byKey);
+    } catch (e) {
+      setLoadError(e?.message ?? String(e));
+    } finally {
       setLoading(false);
-      return;
     }
-
-    const byKey = {};
-    for (const r of data) {
-      byKey[r.fuel_type] = { ...r, price: Number(r.price) };
-    }
-    setRows(byKey);
-    setLoading(false);
   }, []);
 
   useEffect(() => { loadPrices(); }, [loadPrices]);
@@ -92,19 +109,44 @@ export default function AdminDashboardPage() {
 
     let firstError = null;
     const newlySaved = {};
+    const editorEmail = auth?.currentUser?.email ?? null;
 
-    // Run the RPC calls sequentially so we can attribute errors clearly.
+    // One atomic batch per fuel: the price update AND its audit-log entry
+    // commit together or not at all (same guarantee the old Supabase RPC
+    // gave us). Sequential so errors are attributable to a specific fuel.
     for (const key of dirtyKeys) {
       const num = Number(drafts[key]);
-      const { error } = await supabase.rpc('update_fuel_price', {
-        p_fuel_type: key,
-        p_new_price: num,
-      });
-      if (error) {
-        firstError = firstError ?? error.message;
+      const oldPrice = rows[key]?.price ?? null;
+      try {
+        const batch = writeBatch(db);
+
+        // setDoc-with-merge also CREATES the doc on very first save, so a
+        // brand-new Firebase project needs no manual seeding.
+        batch.set(
+          doc(db, 'fuel_prices', key),
+          {
+            price: num,
+            previous_price: oldPrice,
+            updated_at: serverTimestamp(),
+            updated_by: editorEmail,
+          },
+          { merge: true }
+        );
+
+        batch.set(doc(collection(db, 'price_changes')), {
+          fuel_type: key,
+          old_price: oldPrice,
+          new_price: num,
+          changed_at: serverTimestamp(),
+          changed_by_email: editorEmail,
+        });
+
+        await batch.commit();
+        newlySaved[key] = true;
+      } catch (e) {
+        firstError = firstError ?? (e?.message ?? String(e));
         break;
       }
-      newlySaved[key] = true;
     }
 
     setSavingMap({});

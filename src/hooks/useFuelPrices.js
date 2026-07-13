@@ -1,8 +1,8 @@
 // Single source of truth for the live fuel prices.
 //
-// - Reads `fuel_prices` from Supabase when configured; otherwise returns the
-//   seeded fallback so the public site never breaks for someone running it
-//   without secrets.
+// - Reads the `fuel_prices` collection from Firestore when configured;
+//   otherwise returns the seeded fallback so the public site never breaks
+//   for someone running it without a Firebase project.
 // - Polls every `refreshInterval` ms (default 60s) so the hero chip and the
 //   "Live Fuel Prices" section both reflect admin edits within ~1 minute.
 // - Caches the last successful payload in `localStorage` so a transient
@@ -11,10 +11,11 @@
 // - Exposes a `refresh()` callback for components that want an immediate
 //   re-fetch (e.g. the Refresh button on the prices section).
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
 
-import { isSupabaseConfigured, supabase } from '../lib/supabase.js';
+import { db, isFirebaseConfigured } from '../lib/firebase.js';
 
-const STORAGE_KEY = 'airport-energy:fuel-prices:v1';
+const STORAGE_KEY = 'airport-energy:fuel-prices:v2';
 const FUEL_KEYS = ['petrol', 'diesel'];
 
 const FALLBACK = {
@@ -55,14 +56,12 @@ function writeCache(rows) {
   }
 }
 
-function normalise(row) {
-  return {
-    fuel_type: row.fuel_type,
-    price: Number(row.price),
-    previous_price:
-      row.previous_price != null ? Number(row.previous_price) : null,
-    updated_at: row.updated_at,
-  };
+// Firestore Timestamp -> ISO string; passthrough for strings/null.
+function tsToIso(ts) {
+  if (!ts) return null;
+  if (typeof ts === 'string') return ts;
+  if (typeof ts.toDate === 'function') return ts.toDate().toISOString();
+  return null;
 }
 
 export function useFuelPrices({ refreshInterval = 60_000 } = {}) {
@@ -71,7 +70,7 @@ export function useFuelPrices({ refreshInterval = 60_000 } = {}) {
   const [rows, setRows] = useState(initial);
   // `loading` reflects ONLY the first fetch after mount, so the cards never
   // re-flash a skeleton on every poll.
-  const [loading, setLoading] = useState(isSupabaseConfigured);
+  const [loading, setLoading] = useState(isFirebaseConfigured);
   const [error, setError] = useState(null);
   const [lastFetchedAt, setLastFetchedAt] = useState(new Date());
 
@@ -84,7 +83,7 @@ export function useFuelPrices({ refreshInterval = 60_000 } = {}) {
     inFlightRef.current = true;
 
     try {
-      if (!isSupabaseConfigured || !supabase) {
+      if (!isFirebaseConfigured || !db) {
         // Static fallback (cached or seeded). Treat as a successful "fetch".
         if (mountedRef.current) {
           setError(null);
@@ -94,27 +93,37 @@ export function useFuelPrices({ refreshInterval = 60_000 } = {}) {
         return;
       }
 
-      const { data, error: fetchErr } = await supabase
-        .from('fuel_prices')
-        .select('fuel_type, price, previous_price, updated_at')
-        .in('fuel_type', FUEL_KEYS);
-
-      if (fetchErr) throw fetchErr;
+      const snap = await getDocs(collection(db, 'fuel_prices'));
 
       const byKey = {};
-      for (const r of data ?? []) {
-        byKey[r.fuel_type] = normalise(r);
-      }
+      snap.forEach((d) => {
+        if (!FUEL_KEYS.includes(d.id)) return;
+        const data = d.data();
+        byKey[d.id] = {
+          fuel_type: d.id,
+          price: Number(data.price),
+          previous_price:
+            data.previous_price != null ? Number(data.previous_price) : null,
+          updated_at: tsToIso(data.updated_at),
+        };
+      });
+
       // Only commit if we got at least one valid row - otherwise keep the
-      // existing values rather than blanking the UI.
+      // existing values rather than blanking the UI. (An empty collection
+      // just means the admin hasn't saved a price yet - fallback stands.)
       if (FUEL_KEYS.some((k) => byKey[k])) {
         if (mountedRef.current) {
-          setRows((prev) => ({ ...prev, ...byKey }));
+          setRows((prev) => {
+            const next = { ...prev, ...byKey };
+            writeCache(next);
+            return next;
+          });
           setError(null);
-          setLastFetchedAt(new Date());
-          setLoading(false);
         }
-        writeCache({ ...rows, ...byKey });
+      }
+      if (mountedRef.current) {
+        setLastFetchedAt(new Date());
+        setLoading(false);
       }
     } catch (e) {
       if (mountedRef.current) {
@@ -125,8 +134,6 @@ export function useFuelPrices({ refreshInterval = 60_000 } = {}) {
     } finally {
       inFlightRef.current = false;
     }
-    // `rows` is intentionally omitted: re-reading it would loop forever.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

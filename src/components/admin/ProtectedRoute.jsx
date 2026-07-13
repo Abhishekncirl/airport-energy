@@ -1,20 +1,20 @@
 import { Loader2 } from 'lucide-react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-import { isSupabaseConfigured } from '../../lib/supabase.js';
-import { useSupabaseAuth } from '../../hooks/useSupabaseAuth.js';
+import { isFirebaseConfigured } from '../../lib/firebase.js';
+import { useFirebaseAuth } from '../../hooks/useFirebaseAuth.js';
 
-// Wraps protected admin pages. Three possible states:
-//   1. Supabase not configured  → friendly setup notice
-//   2. Still checking session   → centered spinner
-//   3. Not signed in            → redirect to /admin/login, preserving the
-//                                 target so we can bounce back after login
-//   4. Signed in                → render children
+// Wraps protected admin pages. Four possible states:
+//   1. Firebase not configured    -> friendly setup notice
+//   2. Still checking auth state  -> centered spinner
+//   3. Not signed in              -> redirect to /admin/login, preserving
+//                                    the target so we bounce back after login
+//   4. Signed in                  -> render children
 export default function ProtectedRoute({ children }) {
-  const { isAuthenticated, loading } = useSupabaseAuth();
+  const { isAuthenticated, loading } = useFirebaseAuth();
   const location = useLocation();
 
-  if (!isSupabaseConfigured) {
+  if (!isFirebaseConfigured) {
     return <NotConfiguredNotice />;
   }
 
@@ -47,10 +47,10 @@ function NotConfiguredNotice() {
           Admin panel not configured
         </h1>
         <p className="mt-3 text-slate-600">
-          This deploy is missing Supabase credentials, so the admin panel is
-          unavailable. To enable it, set <code>VITE_SUPABASE_URL</code> and{' '}
-          <code>VITE_SUPABASE_ANON_KEY</code> as build-time environment
-          variables (see the project README for full setup instructions).
+          This build is missing the Firebase project config, so the admin
+          panel is unavailable. Fill in <code>FIREBASE_CONFIG</code> in{' '}
+          <code>src/lib/firebase.js</code> and redeploy (see the project
+          README for the full setup walkthrough).
         </p>
       </div>
     </div>

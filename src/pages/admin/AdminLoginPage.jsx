@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { AlertCircle, Eye, EyeOff, Loader2, Lock, LogIn } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 import Logo from '../../components/Logo.jsx';
-import { isSupabaseConfigured, supabase } from '../../lib/supabase.js';
-import { useSupabaseAuth } from '../../hooks/useSupabaseAuth.js';
+import { auth, isFirebaseConfigured } from '../../lib/firebase.js';
+import { useFirebaseAuth } from '../../hooks/useFirebaseAuth.js';
 
 export default function AdminLoginPage() {
-  const { isAuthenticated, loading: sessionLoading } = useSupabaseAuth();
+  const { isAuthenticated, loading: sessionLoading } = useFirebaseAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -35,9 +36,9 @@ export default function AdminLoginPage() {
     return () => { document.title = prev; };
   }, []);
 
-  // If the build was deployed without Supabase keys, render a clear notice
+  // If the build was deployed without Firebase config, render a clear notice
   // rather than letting users tap a button that does nothing.
-  if (!isSupabaseConfigured) {
+  if (!isFirebaseConfigured) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-slate-50 px-6">
         <div className="max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-lg">
@@ -45,11 +46,10 @@ export default function AdminLoginPage() {
             Admin panel not configured
           </h1>
           <p className="mt-3 text-slate-600">
-            This deploy is missing Supabase credentials. Set{' '}
-            <code>VITE_SUPABASE_URL</code> and{' '}
-            <code>VITE_SUPABASE_ANON_KEY</code> as build-time environment
-            variables, then redeploy. See the project README for the full
-            setup walkthrough.
+            This build is missing the Firebase project config. Fill in{' '}
+            <code>FIREBASE_CONFIG</code> in <code>src/lib/firebase.js</code>{' '}
+            and redeploy. See the project README for the full setup
+            walkthrough.
           </p>
         </div>
       </div>
@@ -61,21 +61,16 @@ export default function AdminLoginPage() {
     setError(null);
     setSubmitting(true);
 
-    const { error: signInError } = await supabase.auth.signInWithPassword({
-      email: email.trim(),
-      password,
-    });
-
-    setSubmitting(false);
-
-    if (signInError) {
-      // Supabase returns "Invalid login credentials" - keep the message
-      // generic so we don't reveal which field was wrong.
+    try {
+      await signInWithEmailAndPassword(auth, email.trim(), password);
+      navigate(from, { replace: true });
+    } catch {
+      // Firebase reports auth/invalid-credential and friends - keep the
+      // message generic so we don't reveal which field was wrong.
       setError('Invalid username or password');
-      return;
+    } finally {
+      setSubmitting(false);
     }
-
-    navigate(from, { replace: true });
   };
 
   return (
@@ -180,7 +175,7 @@ export default function AdminLoginPage() {
 
           <p className="mt-6 flex items-center justify-center gap-1.5 text-xs text-slate-500">
             <Lock className="h-3 w-3" />
-            Secured by Supabase Auth · sessions expire automatically
+            Secured by Firebase Authentication · sessions refresh automatically
           </p>
         </div>
       </div>
