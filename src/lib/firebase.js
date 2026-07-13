@@ -16,12 +16,12 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const FIREBASE_CONFIG = {
-  apiKey: '',
-  authDomain: '',
-  projectId: '',
-  storageBucket: '',
-  messagingSenderId: '',
-  appId: '',
+  apiKey: 'AIzaSyAWcCW9moE1ktt6q0y4Tq_R4eF0fG3i7YA',
+  authDomain: 'airport-energy.firebaseapp.com',
+  projectId: 'airport-energy',
+  storageBucket: 'airport-energy.firebasestorage.app',
+  messagingSenderId: '425151450270',
+  appId: '1:425151450270:web:dcfbf376ac5044326e7f8f',
 };
 
 export const isFirebaseConfigured = Boolean(
