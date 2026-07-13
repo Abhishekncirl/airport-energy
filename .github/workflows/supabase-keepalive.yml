@@ -11,7 +11,9 @@ name: Keep Supabase awake
 
 on:
   schedule:
-    - cron: '0 6 * * 1,4'   # Monday + Thursday at 06:00 UTC
+    # Daily. The odd minute (:17) is deliberate - GitHub delays or skips
+    # on-the-hour schedules far more often because of load spikes.
+    - cron: '17 5 * * *'
   workflow_dispatch:        # manual trigger in case you ever need it
 
 jobs:
