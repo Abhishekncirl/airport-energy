@@ -16,21 +16,22 @@ export const BUSINESS = {
   phoneTel: '+353874106028',
   // WhatsApp deep-link number in wa.me format (no plus, no spaces).
   whatsapp: '353874106028',
-  email: 'info@cfmotorsales.ie', // [CONFIRM]
+  // NOTE: dummy placeholder values for review - replace with confirmed details.
+  email: 'sales@cfmotorsales.ie', // [CONFIRM] (dummy)
   address: {
-    line1: '[CONFIRM address line 1]',
-    line2: '[CONFIRM town/county]',
-    eircode: '[CONFIRM Eircode]',
+    line1: 'Unit 4, Boghall Road Business Park', // [CONFIRM] (dummy)
+    line2: 'Bray, Co. Wicklow', // [CONFIRM] (dummy)
+    eircode: 'A98 X283', // [CONFIRM] (dummy)
     country: 'Ireland',
   },
   // Local SEO targeting - fill the town/county once the address is confirmed.
   locality: {
-    town: '[CONFIRM Town]',
-    county: '[CONFIRM County]',
+    town: 'Bray', // [CONFIRM] (dummy)
+    county: 'Wicklow', // [CONFIRM] (dummy)
   },
   social: {
-    facebook: 'https://facebook.com/', // [CONFIRM URL]
-    tiktok: 'https://www.tiktok.com/', // [CONFIRM URL]
+    facebook: 'https://www.facebook.com/cfmotorsales', // [CONFIRM URL] (dummy)
+    tiktok: 'https://www.tiktok.com/@cfmotorsales', // [CONFIRM URL] (dummy)
   },
   // Opening hours - overridden by site_settings when the owner edits them.
   openingHours: [
